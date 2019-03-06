@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import Profile from './components/Profile/Profile'
-import Auth from './components/Auth/Auth'
-import AddWorkout from './components/AddWorkout/AddWorkout'
+import { HashRouter} from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './ducks/store'
+import routes from './routes'
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      <Profile/>
-      <Auth />
-      <AddWorkout />
-        
-      </div>
+      <Provider store = {store}>
+        <HashRouter>
+          <div className="App">{routes}</div>
+        </HashRouter>
+      </Provider>
     );
   }
 }
