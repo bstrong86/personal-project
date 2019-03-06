@@ -22,6 +22,7 @@ app.use(sessions({
 
 app.get('/auth/current', ctrl.getUser)
 app.post('/auth/login', ctrl.login)
+app.post('/auth/logout', ctrl.logout)
 app.post('/auth/register', ctrl.register)
 app.post('/auth/workouts/:userid', ctrl.createWorkout)
 app.post('/auth/exercise/:workoutid', ctrl.addExercise)

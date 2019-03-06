@@ -61,7 +61,7 @@ class Auth extends Component {
             this.props.updateUser(res.data)
             this.props.history.push('/profile')
         } catch (err) {
-            // alert ('wrong username or password')
+            alert ('wrong username or password')
         }
     }
 

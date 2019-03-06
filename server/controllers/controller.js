@@ -55,6 +55,11 @@ module.exports = {
             } else {
                 res.sendStatus(401)
             }
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
+
     }
     
 }

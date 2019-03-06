@@ -18,9 +18,19 @@ class Profile extends Component {
                 }
             }
     }
+    logout = async () => {
+        await axios.post('/auth/logout')
+        this.props.clearUser()
+        this.props.history.push('/')
+    }
     render() {
+        const {username, profile_pic} = this.props
         return (
-            <div>Profile</div>
+            <div>
+                <h3>{username}</h3>
+                <img src={profile_pic} alt={username}/>
+                <button onClick={this.logout}>Logout</button>
+            </div>
         )
     }
 }
