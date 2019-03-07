@@ -15,17 +15,24 @@ massive(CONNECTION_STRING).then(db => {
 })
 app.use(sessions({
     secret: SESSION_SECRET,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {maxAge: 1000000000}
 }))
 
 app.get('/auth/current', ctrl.getUser)
+
 app.post('/auth/login', ctrl.login)
+
 app.post('/auth/logout', ctrl.logout)
+
 app.post('/auth/register', ctrl.register)
-app.post('/auth/workouts/:userid', ctrl.createWorkout)
-app.post('/auth/exercise/:workoutid', ctrl.addExercise)
+
+app.get('/auth/workouts/:id', ctrl.getWorkouts)
+
+app.post('/auth/workout/:id', ctrl.createWorkout)
+
+app.post('/auth/exercise/:id', ctrl.addExercise)
 
 
 app.listen(SERVER_PORT, () => console.log(`Working on port ${SERVER_PORT}`))

@@ -4,42 +4,69 @@ import {connect} from 'react-redux'
 import {updateUser, clearUser} from '../../ducks/reducer'
 
 class Profile extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            newWorkout:'',
+            workouts: []
+        }
+    }
     componentDidMount(){
-        this.getUser()
+        this.getWorkouts()
+        
     }
-    getUser = async () => {
-        const {id} = this.props
-            if (!id) {
-                try {
-                    let res = await axios.get('/auth/current')
-                    this.props.updateUser(res.data)
-                }catch (err){
-                    this.props.history.push('/')
-                }
-            }
+    getWorkouts = async () => {
+        console.log(this.props)
+        const {id} = this.props.id
+        let res = await axios.get(`/auth/workouts/${id}`)
+        this.setState({
+            workouts: res.data
+        })
+        
     }
-    logout = async () => {
-        await axios.post('/auth/logout')
-        this.props.clearUser()
-        this.props.history.push('/')
+    createWorkout = async () => {
+        const newWorkout = {
+            name: this.state.newWorkout
+
+        }
+        console.log(newWorkout)
+        const {id} = this.props.id
+        try {
+            let res = await axios.post(`/auth/workout/${id}`,newWorkout)
+            console.log(newWorkout)
+            this.getWorkouts()
+            res.sendStatus(200)
+            } catch (err){
+            console.log(err)
+        }
+        
+    }
+    handleChange = async (prop, val) => {
+        this.setState({
+          [prop]:val
+        })
     }
     render() {
-        const {username, profile_pic} = this.props
         return (
-            <div>
-                <h3>{username}</h3>
-                <img src={profile_pic} alt={username}/>
-                <button onClick={this.logout}>Logout</button>
+            <div>Workouts
+                <input placeholder="workout name" onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
+                <button onClick={this.createWorkout}>Create Workout</button>
             </div>
         )
     }
+    
 }
 const mapStateToProps = reduxState => {
-    return reduxState
+    return {
+        id: reduxState
+    }
 }
 const mapDispatchToProps = {
-    updateUser,
-    clearUser
+    updateUser
 }
 
-export default connect( mapStateToProps, mapDispatchToProps) (Profile)
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

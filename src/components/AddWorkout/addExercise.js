@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
-class AddWorkout extends Component {
+class AddExercise extends Component {
     render() {
         return (
-            <div>AddWorkout</div>
+            <div>AddExercise</div>
         )
     }
 }
 
-export default AddWorkout
+export default AddExercise

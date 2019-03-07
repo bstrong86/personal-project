@@ -37,10 +37,16 @@ module.exports = {
         res.status(200).send(session.user)
     },
     createWorkout: async (req, res) => {
-        const {name} = req.body
-        const db = req.app.get('db')
-        let workout = await db.create_workout({name})
-        workout = workout[0]
+        try{
+            const {name} = req.body
+            console.log(req.body)
+            const {id} = req.params
+            const db = req.app.get('db')
+            let workout = await db.create_workout(name, id)
+            workout = workout[0]
+        } catch (err) {
+            console.log(err)
+        }
     },
     addExercise:async (req, res) => {
         const {name, sets, reps} = req.body
@@ -57,8 +63,21 @@ module.exports = {
             }
     },
     logout: (req, res) => {
-        req.session.destroy()
-        res.sendStatus(200)
+        req.session.destroy(function(){
+            res.sendStatus(200)
+        })
+
+    },
+    getWorkouts: async (req, res) => {
+        try {
+            const db = req.app.get('db')
+            const {id} = req.params
+            let workouts = await db.get_workouts(id)
+            res.status(200).send(workouts)
+        }catch (err) {
+            console.log(err + ' get workoutserror')
+        }
+
 
     }
     

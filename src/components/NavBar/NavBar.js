@@ -1,27 +1,51 @@
-import React from 'react'
+import React, {Component} from 'react'
+import axios from 'axios'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {updateUser, clearUser} from '../../ducks/reducer'
 import {withRouter} from 'react-router-dom'
 
-function NavBar(props){
-    console.log(props)
-    const{username, profile_pic} = props
-    if(props.location.pathname !=='/') {
-        return(
-            <div>Nav</div>
-        )
-    } else {
+class NavBar extends Component {
+    componentDidMount(){
+        this.getUser()
+    }
+    getUser = async () => {
+        const {id} = this.props
+            if (!id) {
+                try {
+                    let res = await axios.get('/auth/current')
+                    this.props.updateUser(res.data)
+                }catch (err){
+                    this.props.history.push('/')
+                }
+            }
+    }
+    logout = async () => {
+        await axios.post('/auth/logout')
+        this.props.clearUser()
+        this.props.history.push('/')
+    }
+    render() {
+        const {username, profile_pic} = this.props
+        if(this.props.location.pathname !== '/'){
         return (
-            null
-        )
+            <div>
+                <h3>{username}</h3>
+                <img src={profile_pic} alt={username}/>
+                <button onClick={this.logout}>Logout</button>
+            </div>
+        )} else {
+            return (
+                null
+            )
+        }
     }
 }
-
-function mapStateToProps(reduxState){
-    return {
-        username: reduxState.username,
-        profile_pic: reduxState.profile_pic
-    }
+const mapStateToProps = reduxState => {
+    return reduxState
+}
+const mapDispatchToProps = {
+    updateUser,
+    clearUser
 }
 
-export default withRouter(connect(mapStateToProps)(NavBar))
+export default withRouter(connect( mapStateToProps, mapDispatchToProps) (NavBar))
