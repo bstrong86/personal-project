@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import { updateUser } from '../../ducks/reducer'
+import {Link} from 'react-router-dom'
 
 
 class Auth extends Component {
@@ -40,7 +41,7 @@ class Auth extends Component {
     register = async () => {
         let user = {
             username:this.state.username,
-            password:this.state.password
+            password:this.state.password,
         }
         try {
             let res = await axios.post('/auth/register', user)
@@ -54,7 +55,6 @@ class Auth extends Component {
         let user = {
             username: this.state.username,
             password: this.state.password,
-            profile_pic: this.state.profile_pic
         }
         try {
             let res = await axios.post('/auth/login', user)
@@ -68,8 +68,7 @@ class Auth extends Component {
 
 
     render() {
-        console.log(this.state)
-        const {username, password} = this.state
+        const {username, password, profile_pic} = this.state
         return (
             <div>
                 <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
