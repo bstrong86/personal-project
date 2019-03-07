@@ -9,7 +9,8 @@ class Profile extends Component {
 
         this.state = {
             newWorkout:'',
-            workouts: []
+            workouts: [],
+            search:''
         }
     }
     componentDidMount(){
@@ -47,11 +48,19 @@ class Profile extends Component {
           [prop]:val
         })
     }
+    handleSearch = async () => {
+        
+    }
     render() {
         return (
             <div>Workouts
+                <input placeholder= "search" onChange={e => {this.handleChange("searchWorkout", e.target.value)}}/>
+                <button onClick={this.handleSearch}>Search</button>
+                
                 <input placeholder="workout name" onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
+                
                 <button onClick={this.createWorkout}>Create Workout</button>
+
             </div>
         )
     }
