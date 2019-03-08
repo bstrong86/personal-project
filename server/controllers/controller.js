@@ -77,8 +77,16 @@ module.exports = {
         }catch (err) {
             console.log(err + ' get workoutserror')
         }
-
-
+    },
+    getExercises: async (req, res) => {
+        try {
+            const db = req.app.get('db')
+            const {id} = req.params
+            let exercises = await db.get_exercises(id)
+            res.status(200).send(exercises)
+        } catch (err){
+            console.log(err)
+        }
     }
     
 }

@@ -13,6 +13,7 @@ create table exercises (
     name varchar,
     reps integer,
     sets integer,
+    weight integer,
     workout_id integer references workouts(id)
 )
 insert into users (username, password, profile_pic)

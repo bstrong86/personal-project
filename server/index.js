@@ -34,5 +34,7 @@ app.post('/auth/workout/:id', ctrl.createWorkout)
 
 app.post('/auth/exercise/:id', ctrl.addExercise)
 
+app.get('/auth/exercises/:id', ctrl.getExercises)
+
 
 app.listen(SERVER_PORT, () => console.log(`Working on port ${SERVER_PORT}`))

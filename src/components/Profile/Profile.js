@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import Workout from '../../components/Workout/Workout'
 import {connect} from 'react-redux'
 import {updateUser, clearUser} from '../../ducks/reducer'
 
@@ -17,8 +18,11 @@ class Profile extends Component {
         this.getWorkouts()
         
     }
+    componentDidUpdate(){
+        this.getWorkouts()
+    }
+
     getWorkouts = async () => {
-        console.log(this.props)
         const {id} = this.props.id
         let res = await axios.get(`/auth/workouts/${id}`)
         this.setState({
@@ -52,6 +56,14 @@ class Profile extends Component {
         
     }
     render() {
+        const mappedWorkouts = this.state.workouts.map((workout) => {
+            return (
+                <Workout
+                key={workout.id}
+                name={workout.name}
+                />
+            )
+        })
         return (
             <div>Workouts
                 <input placeholder= "search" onChange={e => {this.handleChange("searchWorkout", e.target.value)}}/>
@@ -60,6 +72,7 @@ class Profile extends Component {
                 <input placeholder="workout name" onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
                 
                 <button onClick={this.createWorkout}>Create Workout</button>
+                <div>{mappedWorkouts}</div>
 
             </div>
         )
