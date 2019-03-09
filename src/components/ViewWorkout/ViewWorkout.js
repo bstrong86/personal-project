@@ -17,7 +17,8 @@ class ViewWorkout extends Component {
 
     }
     getExercises = async () => {
-        const {workout_id} = this.props.workout_id
+        console.log(this.props)
+        const {workout_id} = this.props
         let res = await axios.get(`/auth/exercises/${workout_id}`)
         this.setState({
             exercises: res.data
@@ -44,9 +45,8 @@ class ViewWorkout extends Component {
     }
 }
 const mapStateToProps = reduxState => {
-    return {
-        id: reduxState
-    }
+    return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
+
 }
 const mapDispatchToProps = {
     updateWorkout

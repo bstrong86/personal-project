@@ -9,8 +9,8 @@ class NavBar extends Component {
         this.getUser()
     }
     getUser = async () => {
-        const {id} = this.props
-            if (!id) {
+        const {user_id} = this.props
+            if (!user_id) {
                 try {
                     let res = await axios.get('/auth/current')
                     this.props.updateUser(res.data)
@@ -26,6 +26,7 @@ class NavBar extends Component {
     }
     render() {
         const {username, profile_pic} = this.props
+        
         if(this.props.location.pathname !== '/'){
         return (
             <div>
@@ -41,7 +42,7 @@ class NavBar extends Component {
     }
 }
 const mapStateToProps = reduxState => {
-    return reduxState
+    return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
 }
 const mapDispatchToProps = {
     updateUser,

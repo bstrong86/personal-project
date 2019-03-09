@@ -38,12 +38,19 @@ module.exports = {
     },
     createWorkout: async (req, res) => {
         try{
-            const {name} = req.body
-            console.log(req.body)
+            const {workout_name} = req.body
             const {id} = req.params
+            let users_id = id
             const db = req.app.get('db')
-            let workout = await db.create_workout(name, id)
+            let takenWorkoutName = await db.check_workout_name({workout_name, users_id})
+            console.log(takenWorkoutName)
+            takenWorkoutName = +takenWorkoutName[0].count
+            if (takenWorkoutName !== 0) {
+                return res.sendStatus(401)
+            }
+            let workout = await db.create_workout(workout_name, users_id)
             workout = workout[0]
+            res.status(200).send(workout)
         } catch (err) {
             console.log(err)
         }

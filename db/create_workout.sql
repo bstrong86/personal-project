@@ -1,3 +1,3 @@
-insert into workouts (name, user_id)
+insert into workouts (workout_name, users_id)
 values ($1, $2)
-returning name
+returning workout_name

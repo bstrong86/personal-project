@@ -1,20 +1,21 @@
 create table users (
+    user_id serial primary key,
     username varchar,
     password varchar,
     profile_pic varchar
     );
 create table workouts (
-    id serial primary key,
-    name varchar,
-    user_id integer references users(id)
+    workout_id serial primary key,
+    workout_name varchar,
+    users_id integer references users(user_id)
     );
-create table exercises (
-    id serial primary key,
-    name varchar,
+create table exercises ( 
+    exercise_id serial primary key,
+    exercise_name varchar,
     reps integer,
     sets integer,
     weight integer,
-    workout_id integer references workouts(id)
+    workouts_id integer references workouts(workout_id)
 )
 insert into users (username, password, profile_pic)
 values ('Test', '1','test_image')

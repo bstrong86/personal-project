@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import { updateUser } from '../../ducks/reducer'
-import {Link} from 'react-router-dom'
 
 
 class Auth extends Component {
@@ -80,9 +79,10 @@ class Auth extends Component {
     }
 }
 const mapStateToProps = reduxState => {
-    return{
-        id: reduxState.id
-    }
+    
+        return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
+
+    
 }
 const mapDispatchToProps = {
     updateUser
