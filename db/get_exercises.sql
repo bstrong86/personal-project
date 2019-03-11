@@ -1,3 +1,3 @@
 select * 
 from exercises
-where workout_id = ${workout_id}
+where workouts_id = $1

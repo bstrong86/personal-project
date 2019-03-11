@@ -10,7 +10,7 @@ export default (
     <Switch>
         <Route path = '/profile/addexercise' component = {addExercise}/>
         <Route path = '/profile/create' component = {CreateWorkout} />
-        <Route path = '/profile/workout' component = {ViewWorkout} />
+        <Route path = '/profile/viewWorkout/:id' component = {ViewWorkout} />
         <Route path = '/profile' component = {Profile}></Route>
         <Route exact path = '/' component = {Auth}></Route>
         

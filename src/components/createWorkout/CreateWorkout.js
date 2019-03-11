@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import Workout from '../Workout/Workout'
 import {connect} from 'react-redux'
-import {updateWorkout} from '../../ducks/reducer'
+import {updateWorkout} from '../../ducks/auth_reducer'
 
 class CreateWorkout extends Component {
     constructor(props) {
@@ -22,10 +21,9 @@ class CreateWorkout extends Component {
 
         }
         console.log(newWorkout)
-        const {user_id} = this.props.id
+        const {user_id} = this.props
         try {
             let res = await axios.post(`/auth/workout/${user_id}`,newWorkout)
-            console.log(res.data)
             this.props.updateWorkout(res.data)
             this.props.history.push('/profile/addexercise')
             } catch (err){

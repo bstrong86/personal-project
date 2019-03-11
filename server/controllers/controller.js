@@ -40,15 +40,16 @@ module.exports = {
         try{
             const {workout_name} = req.body
             const {id} = req.params
+            // console.log(workout_name, id)
             let users_id = id
             const db = req.app.get('db')
             let takenWorkoutName = await db.check_workout_name({workout_name, users_id})
-            console.log(takenWorkoutName)
+            // console.log(takenWorkoutName)
             takenWorkoutName = +takenWorkoutName[0].count
             if (takenWorkoutName !== 0) {
                 return res.sendStatus(401)
             }
-            let workout = await db.create_workout(workout_name, users_id)
+            let workout = await db.create_workout({workout_name, users_id})
             workout = workout[0]
             res.status(200).send(workout)
         } catch (err) {
@@ -56,9 +57,10 @@ module.exports = {
         }
     },
     addExercise:async (req, res) => {
-        const {name, sets, reps} = req.body
+        const {exercise_name, sets, reps, weight} = req.body
+        const {id} = req.params
         const db = req.app.get('db')
-        let exercise = await db.add_exercise({name, sets, reps})
+        let exercise = await db.create_exercise({exercise_name, sets, reps, weight, workouts_id: id})
         exercise = exercise[0]
     },
     getUser: async (req, res) => {
@@ -77,8 +79,10 @@ module.exports = {
     },
     getWorkouts: async (req, res) => {
         try {
+            // console.log(req.params)
             const db = req.app.get('db')
             const {id} = req.params
+            // console.log({getworkouts: user_id})
             let workouts = await db.get_workouts(id)
             res.status(200).send(workouts)
         }catch (err) {
@@ -89,7 +93,9 @@ module.exports = {
         try {
             const db = req.app.get('db')
             const {id} = req.params
+            console.log(req.params)
             let exercises = await db.get_exercises(id)
+            console.log(exercises)
             res.status(200).send(exercises)
         } catch (err){
             console.log(err)

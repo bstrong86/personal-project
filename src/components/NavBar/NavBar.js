@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {updateUser, clearUser} from '../../ducks/reducer'
+import {updateUser, clearUser} from '../../ducks/auth_reducer'
 import {withRouter} from 'react-router-dom'
 
 class NavBar extends Component {
@@ -19,6 +19,9 @@ class NavBar extends Component {
                 }
             }
     }
+    goToProfile = () => {
+        this.props.history.push('/profile')
+    }
     logout = async () => {
         await axios.post('/auth/logout')
         this.props.clearUser()
@@ -31,7 +34,7 @@ class NavBar extends Component {
         return (
             <div>
                 <h3>{username}</h3>
-                <img src={profile_pic} alt={username}/>
+                <img onClick={this.goToProfile} src={profile_pic} alt={username}/>
                 <button onClick={this.logout}>Logout</button>
             </div>
         )} else {

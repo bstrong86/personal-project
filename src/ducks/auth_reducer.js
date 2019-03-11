@@ -44,8 +44,7 @@ export default function auth_reducer(state = initialState, action) {
     case CLEAR_USER:
         return {...state, user_id: 0, username: '', profile_pic:''}
     case UPDATE_WORKOUT:
-        const {workout_name} = payload
-        const workout_id = payload.id
+        const {workout_name, workout_id} = payload
         return {...state, workout_id, workout_name}
     case CLEAR_WORKOUT:
         return {...state, workout_id:0, workout_name: ''}

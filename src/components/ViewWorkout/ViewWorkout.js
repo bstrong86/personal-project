@@ -2,13 +2,13 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import Exercise from '../../components/Exercise/Exercise'
-import {updateWorkout} from '../../ducks/reducer'
+import {updateWorkout} from '../../ducks/auth_reducer'
 
 class ViewWorkout extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
+        
             exercises: []
         }
     }
@@ -16,21 +16,28 @@ class ViewWorkout extends Component {
         this.getExercises()
 
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if(prevState.exercises !== this.state.exercises) {
+    //         this.getExercises()
+    //     }
+    // }
     getExercises = async () => {
-        console.log(this.props)
-        const {workout_id} = this.props
-        let res = await axios.get(`/auth/exercises/${workout_id}`)
+        const {id} = this.props.match.params
+        let res = await axios.get(`/auth/exercises/${id}`)
+        console.log(res.data)
         this.setState({
             exercises: res.data
         })
     }
     
     render() {
+        // console.log(this)
         const mappedExercises = this.state.exercises.map((exercise) => {
             return (
                 <Exercise 
-                key={exercise.id}
-                name={exercise.name}
+                key={exercise.exercise_id}
+                name={exercise.exercise_name}
                 sets={exercise.sets}
                 reps={exercise.reps}
                 weight={exercise.weight}

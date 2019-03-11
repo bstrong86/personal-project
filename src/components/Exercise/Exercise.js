@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Workout(props) {
+export default function Exercise(props) {console.log(props)
     const {name, sets, reps, weight} = props
     return (
         <div>

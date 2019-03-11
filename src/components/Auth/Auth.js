@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import { updateUser } from '../../ducks/reducer'
+import { updateUser } from '../../ducks/auth_reducer'
 
 
 class Auth extends Component {

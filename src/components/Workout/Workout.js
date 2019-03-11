@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom'
 
 export default function Workout(props) {
     const {name, id} = props
+    console.log(props)
     return (
         <div>
-            <Link to="/auth/profile/workout">
+            <Link to = {`/profile/viewWorkout/${id}`}>
             <div>{name}</div>
             </Link>
+            
         </div>
     )
 }

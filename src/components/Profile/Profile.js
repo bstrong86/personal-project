@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import Workout from '../../components/Workout/Workout'
 import {connect} from 'react-redux'
-import {updateUser, updateWorkout} from '../../ducks/reducer'
+import {updateUser, updateWorkout} from '../../ducks/auth_reducer'
 import {Link} from 'react-router-dom'
 
 class Profile extends Component {
@@ -18,19 +18,21 @@ class Profile extends Component {
         this.getWorkouts()
         
     }
-    componentDidUpdate(){
-        this.getWorkouts()
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevState.workouts !== this.state.workouts){
+    //         this.getWorkouts()
+    //     }
+    // }
 
     getWorkouts = async () => {
-        const {workout_id} = this.props.workout_id
-        let res = await axios.get(`/auth/workouts/${workout_id}`)
+        const {user_id} = this.props
+        let res = await axios.get(`/auth/workouts/${user_id}`)
         this.setState({
             workouts: res.data
         })
         
     }
-    
+      
     handleChange = async (prop, val) => {
         this.setState({
           [prop]:val
@@ -40,13 +42,19 @@ class Profile extends Component {
         
     }
     render() {
-        console.log(this.state)
+        console.log(this.state.workouts)
+        
         const mappedWorkouts = this.state.workouts.map((workout) => {
             return (
+            
+            
+
                 <Workout
-                key={workout.id}
-                name={workout.name}
+                key={workout.workout_id}
+                name={workout.workout_name}
+                id={workout.workout_id}
                 />
+                
             )
         })
         return (
