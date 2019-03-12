@@ -100,6 +100,16 @@ module.exports = {
         } catch (err){
             console.log(err)
         }
-    }
+    },
+    // editExercise: async (req, res) => {
+    //     try{
+    //         const db= req.app.get('db')
+    //         const {exercise_name, sets, reps, weight} = req.body
+    //         const {id} = req.params
+    //         let exercise = await db.edit_exercise(exercise_id: id, exercise_name, sets, reps, weight)
+
+
+    //     }
+    // }
     
 }

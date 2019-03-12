@@ -74,9 +74,9 @@ class addExercise extends Component {
             <div>Exercises
                 <h3>{workout_name}</h3>
                 <input placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
-                <input placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
-                <input placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
-                <input placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
+                <input type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
+                <input type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
+                <input type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
                 <button onClick= {this.createExercise}>Add Exercise</button>
                 <div>{mappedExercises}</div>
             </div>

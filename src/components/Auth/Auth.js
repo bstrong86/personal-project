@@ -67,6 +67,7 @@ class Auth extends Component {
 
 
     render() {
+        console.log(this.state)
         const {username, password, profile_pic} = this.state
         return (
             <div>

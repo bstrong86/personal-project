@@ -1,0 +1,3 @@
+-- update exercises
+-- set exercise_name = 
+-- where exercise_id = 18
