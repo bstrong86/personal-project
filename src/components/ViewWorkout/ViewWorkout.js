@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Exercise from '../../components/Exercise/Exercise'
 import {updateWorkout} from '../../ducks/auth_reducer'
 import {Link} from 'react-router-dom'
+import addExercise from '../AddExercise/addExercise'
 
 class ViewWorkout extends Component {
     constructor(props) {
@@ -25,24 +26,24 @@ class ViewWorkout extends Component {
     // }
     getExercises = async () => {
         const {id} = this.props.match.params
+        // let workout_id = Number.parseInt(id)
         let res = await axios.get(`/auth/exercises/${id}`)
         console.log(res.data)
         this.setState({
             exercises: res.data
         })
     }
-    addNewExercise = async () => {
-        const {id} = this.props.match.params
-        let res = await axios.get(`/auth/exercises/${id}`
-
-        )
-    }
+    // addNewExercise = async () => {
+    //     const {id} = this.props.match.params
+    //     let workout_id = id
+    //     let res = await axios.post(`/auth/exercises/${workout_id}`)
+    // }
     handleProfileButton = () => {
         this.props.history.push('/profile')
     }
     
     render() {
-        // console.log(this)
+        const {id} = this.props.match.params
         const mappedExercises = this.state.exercises.map((exercise) => {
             return (
                 <Exercise 
@@ -51,15 +52,19 @@ class ViewWorkout extends Component {
                 sets={exercise.sets}
                 reps={exercise.reps}
                 weight={exercise.weight}
+                exercise_id={exercise.exercise_id}
                 />
             )
         })
+        console.log(id)
         return (
             <div>
                 <div>{mappedExercises}</div>
-                    <button>Add New Exercise</button>
+                    <Link to = {`/profile/addexercise/${id}`} >
+                        <button>Add New Exercise</button>
+                    </Link>
                     <button onClick= {this.handleProfileButton}>Back to Profile</button>
-            </div>
+                </div>
         )
     }
 }

@@ -22,7 +22,8 @@ class addExercise extends Component {
     }
     getExercises = async () => {
         const {workout_id} = this.props
-        let res = await axios.get(`/auth/exercises/${workout_id}`)
+        let id = workout_id
+        let res = await axios.get(`/auth/exercises/${id}`)
         this.setState({
             exercises: res.data
         })
@@ -38,9 +39,10 @@ class addExercise extends Component {
             weight: this.state.weight,
             workouts_name:this.props.workout_id
         }
-        const {workout_id} = this.props
+        const {id} = this.props.match.params
+        console.log(id)
         try {
-            let res = await axios.post(`/auth/exercise/${workout_id}`, newExercise)
+            let res = await axios.post(`/auth/exercise/${id}`, newExercise)
             this.props.updateExercise(res.data)
             this.getExercises()
             
@@ -67,10 +69,9 @@ class addExercise extends Component {
         this.resetFields()
     }
     handleFinishButton = () => {
-        this.props.history.push('/profile')
+        this.props.history.goBack()
     }
     render() {
-        console.log(this.state.exercises)
         const {workout_name} = this.props
         
         const mappedExercises = this.state.exercises.map((exercise) => {

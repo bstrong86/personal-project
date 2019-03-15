@@ -40,5 +40,7 @@ app.put('/auth/exercise/:id', ctrl.editExercise)
 
 app.get('/auth/workouts', ctrl.getRecentWorkouts)
 
+app.delete('/auth/exercise/:id', ctrl.deleteExercise)
+
 
 app.listen(SERVER_PORT, () => console.log(`Working on port ${SERVER_PORT}`))

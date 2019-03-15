@@ -59,6 +59,7 @@ module.exports = {
     addExercise:async (req, res) => {
         const {exercise_name, sets, reps, weight} = req.body
         const {id} = req.params
+        console.log(id)
         const db = req.app.get('db')
         let exercise = await db.create_exercise({exercise_name, sets, reps, weight, workouts_id: id})
         exercise = exercise[0]
@@ -93,9 +94,7 @@ module.exports = {
         try {
             const db = req.app.get('db')
             const {id} = req.params
-            console.log(req.params)
-            let exercises = await db.get_exercises(id)
-            console.log(exercises)
+            let exercises = await db.get_exercises({id})
             res.status(200).send(exercises)
         } catch (err){
             console.log(err)
@@ -119,5 +118,13 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+    },
+    deleteExercise: async (req, res) => {
+        try{
+            const db = req.app.get('db')
+            const {id} = req.params
+            let exercise_id = id
+            let res = await db.delete_exercise({exercise_id})
+        } catch (err){console.log(err)}
     }     
 }

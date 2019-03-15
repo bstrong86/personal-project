@@ -40,6 +40,14 @@ class Exercise extends Component {
             [prop]: value
         })
     }
+    deleteExercise = async () => {
+        const {exercise_id} = this.props
+        try{
+            await axios.delete(`/auth/exercise/${exercise_id}`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     render() {
         const {name, sets, reps, weight} = this.props
@@ -49,6 +57,7 @@ class Exercise extends Component {
                 <input disabled={(this.state.disabled)} type = "number"  value={this.state.sets} className = "exerciseSets" placeholder= {sets} onChange={e => this.handleChange("sets",e.target.value)}></input>
                 <input disabled={(this.state.disabled)} type = "number"  value={this.state.reps} className = "exerciseReps" placeholder= {reps} onChange={e => this.handleChange("reps",e.target.value)}></input>
                 <input disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
+                
 
                 {/* <input></input>
                 <input></input>
@@ -56,6 +65,7 @@ class Exercise extends Component {
                 <input></input> */}
                 <button className="editButton"  onClick={this.handleEdit}>Edit Exercise</button>
                 <button className="saveButton" onClick={this.saveExercise}>Save</button>
+                <button className="deleteExercise" onClick={this.deleteExercise}>Delete</button>
             </div>
         )
 

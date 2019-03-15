@@ -74,7 +74,6 @@ class Profile extends Component {
             backButton.style.display = "block"        
     }
     render() {
-        console.log(this.state)
         
         const mappedWorkouts = this.state.workouts.map((workout) => {
             return (

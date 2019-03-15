@@ -2,13 +2,15 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateWorkout} from '../../ducks/auth_reducer'
+import {Link} from 'react-router-dom'
 
 class CreateWorkout extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            newWorkout:''
+            newWorkout:'',
+
         }
            
     }
@@ -20,12 +22,14 @@ class CreateWorkout extends Component {
             workout_name: this.state.newWorkout
 
         }
-        console.log(newWorkout)
+        console.log(this.props)
         const {user_id} = this.props
+        // const {workout_id} = this.props
         try {
             let res = await axios.post(`/auth/workout/${user_id}`,newWorkout)
             this.props.updateWorkout(res.data)
-            this.props.history.push('/profile/addexercise')
+            const {workout_id} = res.data
+            this.props.history.push(`/profile/addexercise/${workout_id}`)
             } catch (err){
             console.log(err)
         }
@@ -41,10 +45,16 @@ class CreateWorkout extends Component {
     }
     render() {
         
+        // const {workout_id}= this.state
+        // console.log(workout_id)
+        
         return (
             <div>Workouts
                 <input placeholder="workout name" onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
-                <button onClick={this.createWorkout}>Create Workout Name</button>
+            
+                {/* <Link to={`/profile/addexercise/${workout_id}`}> */}
+                    <button onClick={this.createWorkout}>Create Workout Name</button>
+                {/* </Link> */}
             </div>
         )
     }

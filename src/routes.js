@@ -8,7 +8,7 @@ import addExercise from './components/AddExercise/addExercise';
 
 export default (
     <Switch>
-        <Route path = '/profile/addexercise' component = {addExercise}/>
+        <Route path = '/profile/addexercise/:id' component = {addExercise}/>
         <Route path = '/profile/create' component = {CreateWorkout} />
         <Route path = '/profile/viewWorkout/:id' component = {ViewWorkout} />
         <Route path = '/profile' component = {Profile}></Route>
