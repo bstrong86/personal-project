@@ -3,6 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import Exercise from '../../components/Exercise/Exercise'
 import {updateWorkout} from '../../ducks/auth_reducer'
+import {Link} from 'react-router-dom'
 
 class ViewWorkout extends Component {
     constructor(props) {
@@ -30,6 +31,15 @@ class ViewWorkout extends Component {
             exercises: res.data
         })
     }
+    addNewExercise = async () => {
+        const {id} = this.props.match.params
+        let res = await axios.get(`/auth/exercises/${id}`
+
+        )
+    }
+    handleProfileButton = () => {
+        this.props.history.push('/profile')
+    }
     
     render() {
         // console.log(this)
@@ -47,6 +57,8 @@ class ViewWorkout extends Component {
         return (
             <div>
                 <div>{mappedExercises}</div>
+                    <button>Add New Exercise</button>
+                    <button onClick= {this.handleProfileButton}>Back to Profile</button>
             </div>
         )
     }

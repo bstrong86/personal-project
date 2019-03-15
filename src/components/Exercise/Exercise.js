@@ -13,13 +13,27 @@ class Exercise extends Component {
             sets:0,
             reps:0,
             weight:0,
-            disabled: true
+            disabled: true,
+            buttonDisplay:''
         }
     }
     handleEdit = () => {
         this.setState({
-            disabled: !this.state.disabled
-        })
+            disabled: !this.state.disabled,
+            
+        })           
+    }
+    handleSave = async () => {
+        let exercise = {
+            exercise_name: this.state.name,
+            sets: this.state.sets,
+            reps: this.state.reps,
+            weight: this.state.reps
+        }
+        try {
+            let res = await axios.put(`/auth/exercise/${this.props.exercise_id}`, exercise)
+            // this.props.updateExercise(res.data)
+        } catch (err) {console.log(err)}
     }
     handleChange = (prop, value) => {
         this.setState({
@@ -28,7 +42,6 @@ class Exercise extends Component {
     }
 
     render() {
-        console.log(this.state)
         const {name, sets, reps, weight} = this.props
         return (
             <div>
@@ -41,7 +54,8 @@ class Exercise extends Component {
                 <input></input>
                 <input></input>
                 <input></input> */}
-                <button onClick={this.handleEdit}>Edit Exercise</button>
+                <button className="editButton"  onClick={this.handleEdit}>Edit Exercise</button>
+                <button className="saveButton" onClick={this.saveExercise}>Save</button>
             </div>
         )
 

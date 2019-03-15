@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import Exercise from '../Exercise/Exercise'
+import ShowAddedExercises from '../ShowAddedExercises/ShowAddedExercises'
 import {updateExercise} from '../../ducks/exercise_reducer'
 import {updateWorkout} from '../../ducks/auth_reducer'
 
@@ -17,13 +17,12 @@ class addExercise extends Component {
             weight:0,
         }
     }
-    componentDidMount(){
+    componentDidUpdate(){
         this.getExercises()
     }
     getExercises = async () => {
         const {workout_id} = this.props
         let res = await axios.get(`/auth/exercises/${workout_id}`)
-        console.log(res)
         this.setState({
             exercises: res.data
         })
@@ -45,6 +44,7 @@ class addExercise extends Component {
             this.props.updateExercise(res.data)
             this.getExercises()
             
+            
         } catch (err) {
             console.log(err)
         }
@@ -54,18 +54,31 @@ class addExercise extends Component {
             [prop]: val
         })
     }
+    resetFields = () => {
+        this.setState({
+            name:'',
+            sets:0,
+            reps:0,
+            weight:0
+        })
+    }
+    handleAddButton = () => {
+        this.createExercise()
+        this.resetFields()
+    }
+    handleFinishButton = () => {
+        this.props.history.push('/profile')
+    }
     render() {
+        console.log(this.state.exercises)
         const {workout_name} = this.props
-        console.log(this.props)
         
         const mappedExercises = this.state.exercises.map((exercise) => {
             return (
-                <Exercise
+                <ShowAddedExercises
                 key={exercise.exercise_id}
                 name={exercise.exercise_name}
-                reps={exercise.reps}
-                sets={exercise.sets}
-                weight={exercise.weight}
+                id={exercise.exercise_id}
                 />
             )
         })
@@ -73,11 +86,12 @@ class addExercise extends Component {
         return (
             <div>Exercises
                 <h3>{workout_name}</h3>
-                <input placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
-                <input type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
-                <input type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
-                <input type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
-                <button onClick= {this.createExercise}>Add Exercise</button>
+                <input value={this.state.name} placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
+                <input  value={this.state.sets} type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
+                <input value={this.state.reps} type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
+                <input value={this.state.weight} type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
+                <button onClick= {this.handleAddButton}>Add Exercise</button>
+                <button onClick={this.handleFinishButton}>Finish</button>
                 <div>{mappedExercises}</div>
             </div>
             
@@ -87,7 +101,8 @@ class addExercise extends Component {
 const mapStateToProps = reduxState => {
     return {
         workout_id: reduxState.auth_reducer.workout_id,
-        workout_name: reduxState.auth_reducer.workout_name
+        workout_name: reduxState.auth_reducer.workout_name,
+        exercise_id: reduxState.exercise_reducer.exercise_id
     }
     
 }

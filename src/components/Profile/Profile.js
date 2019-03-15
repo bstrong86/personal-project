@@ -4,6 +4,7 @@ import Workout from '../../components/Workout/Workout'
 import {connect} from 'react-redux'
 import {updateUser, updateWorkout} from '../../ducks/auth_reducer'
 import {Link} from 'react-router-dom'
+import SearchResults from '../SearchResult/SearchResult';
 
 class Profile extends Component {
     constructor(props) {
@@ -11,18 +12,17 @@ class Profile extends Component {
 
         this.state = {
             workouts: [],
-            search:''
+            search:'',
+            searchResult:[],
         }
     }
     componentDidMount(){
         this.getWorkouts()
+        let backButton = document.getElementById("backButton")
+        backButton.style.display = "none"
         
     }
-    // componentDidUpdate(prevProps, prevState){
-    //     if(prevState.workouts !== this.state.workouts){
-    //         this.getWorkouts()
-    //     }
-    // }
+
 
     getWorkouts = async () => {
         const {user_id} = this.props
@@ -38,33 +38,74 @@ class Profile extends Component {
           [prop]:val
         })
     }
-    handleSearch = async () => {
+    handleBackToWorkouts = async () => {
+        this.setState({
+            searchResult: []
+        })
+        let workouts = document.getElementById("mappedWorkouts")
+        let backButton = document.getElementById("backButton")
+        let searchButton = document.getElementById("searchButton")
+        searchButton.style.display = "block"
+        workouts.style.display = "block"
+        backButton.style.display = "none"
         
+
+    }
+    handleSearch = async () => {
+        const {workouts, search} = this.state
+        let searchedWorkout = workouts.filter(workout => workout.workout_name.includes(search))
+            this.setState({
+                searchResult: searchedWorkout,
+            })
+        let button = document.getElementById("searchButton")
+            if (button.style.display === "none" ) {
+                button.style.display = "block"
+            } else {
+                button.style.display = "none"
+            }
+        let results = document.getElementById("mappedWorkouts")
+            if (this.state.search !== '') {
+                if (results.style.display === "none") {
+                    results.style.display = "block"
+                } else {
+                    results.style.display = "none"
+                }}
+        let backButton = document.getElementById("backButton")
+            backButton.style.display = "block"        
     }
     render() {
-        console.log(this.state.workouts)
+        console.log(this.state)
         
         const mappedWorkouts = this.state.workouts.map((workout) => {
             return (
-            
-            
-
                 <Workout
-                key={workout.workout_id}
-                name={workout.workout_name}
-                id={workout.workout_id}
+                    key={workout.workout_id}
+                    name={workout.workout_name}
+                    id={workout.workout_id}
                 />
                 
             )
         })
+
+        const mappedSearchResults = this.state.searchResult.map((workout) => {
+            return (
+                <SearchResults
+                    key={workout.workout_id}
+                    name={workout.workout_name}
+                    id={workout.workout_id}
+                />
+            )
+        })
         return (
             <div>Workouts
-                <input placeholder= "search" onChange={e => {this.handleChange("searchWorkout", e.target.value)}}/>
-                <button onClick={this.handleSearch}>Search</button>
+                <input placeholder= "search" onChange={e => {this.handleChange("search", e.target.value)}}/>
+                <button onClick={this.handleSearch} id ="searchButton">Search</button>
+                <button onClick={this.handleBackToWorkouts} id ="backButton">Back to Workouts</button>
                 <Link to='/profile/create'>
                     <button>Add New Workout</button>
                 </Link>
-                <div>{mappedWorkouts}</div>
+                <div id = "mappedWorkouts">{mappedWorkouts}</div>
+                <div id = "mappedSearchResults">{mappedSearchResults}</div>
 
             </div>
         )

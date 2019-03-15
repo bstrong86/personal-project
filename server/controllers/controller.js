@@ -101,15 +101,23 @@ module.exports = {
             console.log(err)
         }
     },
-    // editExercise: async (req, res) => {
-    //     try{
-    //         const db= req.app.get('db')
-    //         const {exercise_name, sets, reps, weight} = req.body
-    //         const {id} = req.params
-    //         let exercise = await db.edit_exercise(exercise_id: id, exercise_name, sets, reps, weight)
+    editExercise: async (req, res) => {
+        try{
+            const db= req.app.get('db')
+            const {exercise_name, sets, reps, weight} = req.body
+            const {id} = req.params
+            let exercise = await db.edit_exercise(id, exercise_name, sets, reps, weight)
 
 
-    //     }
-    // }
-    
+        } catch (err) { console.log(err) }
+    },
+    getRecentWorkouts: async (req, res) => {
+        try{
+            const db = req.app.get('db')
+            let workouts = await db.get_recent_workouts()
+            res.status(200).send(workouts)
+        } catch (err) {
+            console.log(err)
+        }
+    }     
 }
