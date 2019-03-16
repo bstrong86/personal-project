@@ -124,7 +124,17 @@ module.exports = {
             const db = req.app.get('db')
             const {id} = req.params
             let exercise_id = id
-            let res = await db.delete_exercise({exercise_id})
+            await db.delete_exercise({exercise_id})
         } catch (err){console.log(err)}
-    }     
+    },
+    deleteWorkout: async (req, res) => {
+        try {
+            const db = req.app.get('db')
+            const {id} = req.params
+            let workout_id = id
+            await db.delete_workout({workout_id})
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }

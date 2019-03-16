@@ -18,26 +18,19 @@ class ViewWorkout extends Component {
         this.getExercises()
 
     }
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     if(prevState.exercises !== this.state.exercises) {
-    //         this.getExercises()
-    //     }
-    // }
+    deleteWorkout = async () => {
+        const {id} = this.props.match.params
+        await axios.delete(`/auth/workout/${id}`)
+    }    
     getExercises = async () => {
         const {id} = this.props.match.params
-        // let workout_id = Number.parseInt(id)
         let res = await axios.get(`/auth/exercises/${id}`)
         console.log(res.data)
         this.setState({
             exercises: res.data
         })
     }
-    // addNewExercise = async () => {
-    //     const {id} = this.props.match.params
-    //     let workout_id = id
-    //     let res = await axios.post(`/auth/exercises/${workout_id}`)
-    // }
+   
     handleProfileButton = () => {
         this.props.history.push('/profile')
     }
@@ -64,6 +57,7 @@ class ViewWorkout extends Component {
                         <button>Add New Exercise</button>
                     </Link>
                     <button onClick= {this.handleProfileButton}>Back to Profile</button>
+                    <button>Delete Workout</button>
                 </div>
         )
     }
