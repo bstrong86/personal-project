@@ -7,7 +7,7 @@ export default function Workout(props) {
         <div>
             <Link to = {`/profile/viewWorkout/${id}`}>
                 <div>{name}</div>
-                <button
+                
             </Link>
             
         </div>

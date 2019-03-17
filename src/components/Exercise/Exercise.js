@@ -40,13 +40,10 @@ class Exercise extends Component {
             [prop]: value
         })
     }
-    deleteExercise = async () => {
-        const {exercise_id} = this.props
-        try{
-            await axios.delete(`/auth/exercise/${exercise_id}`)
-        } catch (err) {
-            console.log(err)
-        }
+    deleteExercise = () => {
+        const {exercise_id, workout_id} = this.props        
+        axios.delete(`/auth/exercise/${exercise_id}`)
+        this.props.history.push(`/auth/viewWorkout/${workout_id}`)
     }
 
     render() {
