@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import Exercise from '../../components/Exercise/Exercise'
 import {updateWorkout} from '../../ducks/auth_reducer'
 import {Link} from 'react-router-dom'
-import addExercise from '../AddExercise/addExercise'
 
 class ViewWorkout extends Component {
     constructor(props) {
@@ -27,7 +26,6 @@ class ViewWorkout extends Component {
     getExercises = async () => {
         const {id} = this.props.match.params
         let res = await axios.get(`/auth/exercises/${id}`)
-        console.log(res.data)
         this.setState({
             exercises: res.data
         })
@@ -52,7 +50,6 @@ class ViewWorkout extends Component {
                 />
             )
         })
-        console.log(id)
         return (
             <div>
                 <div>{mappedExercises}</div>

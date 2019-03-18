@@ -83,8 +83,8 @@ module.exports = {
             // console.log(req.params)
             const db = req.app.get('db')
             const {id} = req.params
-            // console.log({getworkouts: user_id})
-            let workouts = await db.get_workouts(id)
+            let users_id = id
+            let workouts = await db.get_workouts({users_id})
             res.status(200).send(workouts)
         }catch (err) {
             console.log(err + ' get workoutserror')
@@ -103,9 +103,13 @@ module.exports = {
     editExercise: async (req, res) => {
         try{
             const db= req.app.get('db')
-            const {exercise_name, sets, reps, weight} = req.body
+            const {sets, reps, weight} = req.body
             const {id} = req.params
-            let exercise = await db.edit_exercise(id, exercise_name, sets, reps, weight)
+            console.log(req.body)
+            console.log(req.params)
+            let exercise_id = id
+            let exercise = await db.edit_exercise({exercise_id, sets, reps, weight})
+            res.status(200).send(exercise)
 
 
         } catch (err) { console.log(err) }
@@ -136,5 +140,6 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
-    }
+    },
+   
 }

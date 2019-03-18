@@ -15,6 +15,7 @@ class App extends Component {
           <div className="App">
             <NavBar location={this.props.location} />
             {routes}
+            
           </div>
         </HashRouter>
       </Provider>

@@ -1,15 +1,11 @@
 update exercises
-set exercise_name = 'changed'
-where exercise_id = 18;
+set sets = ${sets}
+where exercise_id = ${exercise_id};
 
 update exercises
-set sets = 12
-where exercise_id = 18;
+set reps = ${reps}
+where exercise_id = ${exercise_id};
 
 update exercises
-set reps = 12
-where exercise_id = 18;
-
-update exercises
-set weight = 12
-where exercise_id = 18;
+set weight = ${weight}
+where exercise_id = ${exercise_id};
