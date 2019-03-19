@@ -8,8 +8,12 @@
 //     height: 100%;
 // }
 
+
+html {
+    height:100%;
+}
 body {
-    background-color: $primary-color;
+    background-image: $background-image;
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -17,36 +21,70 @@ body {
 
 .LoginPage {
     margin: 0;
-    // background-color: $secondary-color;
+
+    ::placeholder {
+        color: white;
+   }
 
     .LoginHeader {
         position:absolute;
         height: 30%;
         width: 100%;
+        background-size:cover;
         
     }
     
 
     .LoginSection {
-        background-color: $secondary-color;
+        background-color: none;
+        width:100%;
         padding: 5px;
         position: absolute;
-        top: 25%;
-        
+        top: 10%;
 
-        button{
-            margin:5px;
+        .LoginInputs {
+            display:flex;
+            width:100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            input {
+                margin:5px;
+                height: 35px;
+                background-color: rgba(255,255,255,.01);
+                border-top: 0px;
+                border-right:0px
+                
+
+                
+            }
         }
         
-
-
+        
+        
+        
     }
 }
 
 .WorkoutList {
+    color:white;
     position: absolute;
-    background-color:green;
     top:50%;
     width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
 
+    
+
+}
+
+.RecentWorkoutBox {
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }

@@ -80,7 +80,7 @@ class Auth extends Component {
         console.log(this.state)
        const mappedRecentWorkouts = this.state.recentWorkouts.map((workout) => {
             return (
-                <div>
+                <div className="RecentWorkoutBox">
                 <RecentWorkouts
                     key={workout.workout_id}
                     username={workout.username}
@@ -96,14 +96,18 @@ class Auth extends Component {
         return (
             <div className="LoginPage">
             <header className="LoginHeader">Build a workout</header>
-                <div className="LoginSection">               
-                    <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
-                    <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
-                    <button onClick={this.login} >Login</button>
-                    <button onClick={this.handleRegisterButton}>Register</button>
+                <div className="LoginSection">  
+                    <div className="LoginInputs">             
+                        <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
+                        <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
+                    </div>
+                    <div className="LoginButtons">
+                        <button onClick={this.login} >Login</button>
+                        <button onClick={this.handleRegisterButton}>Register</button>
+                    </div>
                 </div>
                     <section className="WorkoutList">
-                        List of Recent Workouts
+                        <h3>List of Recent Workouts</h3>
                         {mappedRecentWorkouts}
                     </section>
             </div>

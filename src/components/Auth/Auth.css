@@ -1,5 +1,9 @@
+html {
+  height: 100%;
+}
+
 body {
-  background-color: grey;
+  background-image: -webkit-linear-gradient(black, grey);
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -9,27 +13,93 @@ body {
   margin: 0;
 }
 
+.LoginPage ::-webkit-input-placeholder {
+  color: white;
+}
+
+.LoginPage :-ms-input-placeholder {
+  color: white;
+}
+
+.LoginPage ::-ms-input-placeholder {
+  color: white;
+}
+
+.LoginPage ::placeholder {
+  color: white;
+}
+
 .LoginPage .LoginHeader {
   position: absolute;
   height: 30%;
   width: 100%;
+  background-size: cover;
 }
 
 .LoginPage .LoginSection {
-  background-color: white;
+  background-color: none;
+  width: 100%;
   padding: 5px;
   position: absolute;
-  top: 25%;
+  top: 10%;
 }
 
-.LoginPage .LoginSection button {
+.LoginPage .LoginSection .LoginInputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.LoginPage .LoginSection .LoginInputs input {
   margin: 5px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.01);
+  border-top: 0px;
+  border-right: 0px;
 }
 
 .WorkoutList {
   position: absolute;
-  background-color: green;
   top: 50%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+}
+
+.RecentWorkoutBox {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 /*# sourceMappingURL=Auth.css.map */
