@@ -17,15 +17,18 @@ class addExercise extends Component {
             weight:0,
         }
     }
-    componentDidUpdate(){
+    componentDidMount(){
         this.getExercises()
     }
+    
+    
     getExercises = async () => {
-        const {workout_id} = this.props
-        let id = workout_id
+        const {id} = this.props.match.params
         let res = await axios.get(`/auth/exercises/${id}`)
         this.setState({
             exercises: res.data
+
+
         })
     }
     
@@ -44,12 +47,12 @@ class addExercise extends Component {
         try {
             let res = await axios.post(`/auth/exercise/${id}`, newExercise)
             this.props.updateExercise(res.data)
-            this.getExercises()
             
             
         } catch (err) {
             console.log(err)
         }
+        this.history.push(`/auth/addexercise/${this.props.workout_id}`)
     }
     handleChange = (prop, val) => {
         this.setState({
@@ -67,10 +70,12 @@ class addExercise extends Component {
     handleAddButton = () => {
         this.createExercise()
         this.resetFields()
+        this.getExercises()
     }
     handleFinishButton = () => {
         this.props.history.goBack()
     }
+    
     render() {
         const {workout_name} = this.props
         

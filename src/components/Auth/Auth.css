@@ -1,3 +1,35 @@
-/* body {
-    background-color: blue
-} */
+body {
+  background-color: grey;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.LoginPage {
+  margin: 0;
+}
+
+.LoginPage .LoginHeader {
+  position: absolute;
+  height: 30%;
+  width: 100%;
+}
+
+.LoginPage .LoginSection {
+  background-color: white;
+  padding: 5px;
+  position: absolute;
+  top: 25%;
+}
+
+.LoginPage .LoginSection button {
+  margin: 5px;
+}
+
+.WorkoutList {
+  position: absolute;
+  background-color: green;
+  top: 50%;
+  width: 100%;
+}
+/*# sourceMappingURL=Auth.css.map */

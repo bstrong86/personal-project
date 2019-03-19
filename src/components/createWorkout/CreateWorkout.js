@@ -40,8 +40,8 @@ class CreateWorkout extends Component {
           [prop]:val
         })
     }
-    handleSearch = async () => {
-        
+    backToWorkouts = () => {
+        this.props.history.goBack()
     }
     render() {
         
@@ -54,6 +54,7 @@ class CreateWorkout extends Component {
             
                 {/* <Link to={`/profile/addexercise/${workout_id}`}> */}
                     <button onClick={this.createWorkout}>Create Workout Name</button>
+                    <button onClick={this.backToWorkouts}>Back to Profile</button>
                 {/* </Link> */}
             </div>
         )

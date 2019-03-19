@@ -30,21 +30,16 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt)
         let user = await db.register({username, password: hash, profile_pic})
         user = user[0]
-        console.log(user)
-        console.log(session)
         session.user = user
-        console.log(session)
         res.status(200).send(session.user)
     },
     createWorkout: async (req, res) => {
         try{
             const {workout_name} = req.body
             const {id} = req.params
-            // console.log(workout_name, id)
             let users_id = id
             const db = req.app.get('db')
             let takenWorkoutName = await db.check_workout_name({workout_name, users_id})
-            // console.log(takenWorkoutName)
             takenWorkoutName = +takenWorkoutName[0].count
             if (takenWorkoutName !== 0) {
                 return res.sendStatus(401)
@@ -59,7 +54,6 @@ module.exports = {
     addExercise:async (req, res) => {
         const {exercise_name, sets, reps, weight} = req.body
         const {id} = req.params
-        console.log(id)
         const db = req.app.get('db')
         let exercise = await db.create_exercise({exercise_name, sets, reps, weight, workouts_id: id})
         exercise = exercise[0]
@@ -80,7 +74,6 @@ module.exports = {
     },
     getWorkouts: async (req, res) => {
         try {
-            // console.log(req.params)
             const db = req.app.get('db')
             const {id} = req.params
             let users_id = id
@@ -105,8 +98,6 @@ module.exports = {
             const db= req.app.get('db')
             const {sets, reps, weight} = req.body
             const {id} = req.params
-            console.log(req.body)
-            console.log(req.params)
             let exercise_id = id
             let exercise = await db.edit_exercise({exercise_id, sets, reps, weight})
             res.status(200).send(exercise)

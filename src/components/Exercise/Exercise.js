@@ -1,17 +1,15 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {connect} from 'react-redux'
-import {updateWorkout} from '../../ducks/auth_reducer'
-// import {updateExercise} from '../../ducks/exercise_reducer'
+
 
 
 class Exercise extends Component {
     constructor(props) {
         super(props)
         this.state ={
-            sets:0,
-            reps:0,
-            weight:0,
+            sets: props.sets,
+            reps: props.reps,
+            weight: props.weight,
             disabled: true,
             buttonDisplay:''
         }
@@ -40,7 +38,7 @@ class Exercise extends Component {
     deleteExercise = () => {
         const {exercise_id, workout_id} = this.props        
         axios.delete(`/auth/exercise/${exercise_id}`)
-        this.props.history.push(`/auth/viewWorkout/${workout_id}`)
+        // this.props.history.push(`/auth/viewWorkout/${workout_id}`)
     }
 
     render() {        
@@ -53,13 +51,10 @@ class Exercise extends Component {
                 <div>reps</div>
                 <input disabled={(this.state.disabled)} type = "number"  value={this.state.reps} className = "exerciseReps" placeholder= {reps} onChange={e => this.handleChange("reps",e.target.value)}></input>
                 <div>weight</div>
-                <input disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
+                <input disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {this.state.weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
                 
 
-                {/* <input></input>
-                <input></input>
-                <input></input>
-                <input></input> */}
+               
                 <button className="editButton"  onClick={this.handleEdit}>Edit Exercise</button>
                 <button className="saveButton" onClick={this.handleSave}>Save</button>
                 <button className="deleteExercise" onClick={this.deleteExercise}>Delete</button>
@@ -68,16 +63,6 @@ class Exercise extends Component {
 
     } 
 }
-// const mapStateToProps = reduxState => {
-//     return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
-
-// }
-// const mapDispatchToProps = {
-//     updateWorkout,
-//     updateExercise
-// }
-
-
 
 
 export default (Exercise)

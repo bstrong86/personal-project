@@ -30,7 +30,7 @@ class NavBar extends Component {
     render() {
         const {username, profile_pic} = this.props
         
-        if(this.props.location.pathname !== '/'){
+        if(this.props.location.pathname !== '/' && this.props.location.pathname !=='/auth/register'){
         return (
             <div>
                 <h3>{username}</h3>
