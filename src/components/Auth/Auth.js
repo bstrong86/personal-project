@@ -13,7 +13,6 @@ class Auth extends Component {
 
         this.state = {
             isUploading: false,
-            url:'http://via.placeholder.com/450x450',
             username: '',
             password: '',
             profile_pic:'',

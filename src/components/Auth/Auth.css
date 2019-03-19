@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
 html {
   height: 100%;
 }
 
 body {
-  background-image: -webkit-linear-gradient(black, grey);
+  background-image: -webkit-linear-gradient(#f5f250, #e05bbf);
+  background-repeat: none;
+  background-attachment: fixed;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -14,19 +17,19 @@ body {
 }
 
 .LoginPage ::-webkit-input-placeholder {
-  color: white;
+  color: black;
 }
 
 .LoginPage :-ms-input-placeholder {
-  color: white;
+  color: black;
 }
 
 .LoginPage ::-ms-input-placeholder {
-  color: white;
+  color: black;
 }
 
 .LoginPage ::placeholder {
-  color: white;
+  color: black;
 }
 
 .LoginPage .LoginHeader {
@@ -67,6 +70,7 @@ body {
   background-color: rgba(255, 255, 255, 0.01);
   border-top: 0px;
   border-right: 0px;
+  border-color: #e05bbf;
 }
 
 .WorkoutList {
@@ -84,6 +88,11 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 5px;
+}
+
+.WorkoutList h3 {
+  color: white;
+  text-shadow: 2px 2px #e05bbf;
 }
 
 .RecentWorkoutBox {
