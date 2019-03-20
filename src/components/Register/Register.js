@@ -107,7 +107,7 @@ class Auth extends Component {
         const {username, password, url, isUploading} = this.state
         return (
             <div className="RegisterPage">
-                <h1>Upload</h1>
+                <h1>Create a Profile</h1>
                     <img src={url} alt="" width="200px" />
                 <button id='DropzoneButton'>
                   <Dropzone 
