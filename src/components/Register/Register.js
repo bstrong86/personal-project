@@ -109,42 +109,57 @@ class Auth extends Component {
             <div className="RegisterPage">
                 <h1>Upload</h1>
                     <img src={url} alt="" width="200px" />
-
-                <div id='DropzoneBox'>
+                <button id='DropzoneButton'>
                   <Dropzone 
                     id="DropzoneChild"
                      onDropAccepted={this.getSignedRequest}
-                    //  style={{
-                    //  position: 'center',
-                    //  width: 200,
-                    //  height: 200,
-                    //  borderWidth: 7,
-                    //  marginTop: 100,
-                    //  borderColor: 'rgb(102, 102, 102)',
-                    //  borderStyle: 'dashed',
-                    //  borderRadius: 5,
-                    //  display: 'flex',
-                    //  justifyContent: 'center',
-                    //  alignItems: 'center',
-                    //  fontSize: 28,
-                    //  }}
+                    
                      accept='image/*'
                      multiple={false}
                     >  
-                  {/* <div className="AddProfilePic"> */}
                     { () => (
                       <div className="UploadBox">
                             {
                               isUploading 
                               ?  <GridLoader 
                               style={{}}/>
-                              : <p>Drop File or Click Here</p>
+                              : <div className="DropzoneText"> 
+                                <p className="DesktopAddPic">Drop Profile Picture or Click Here</p>
+                                <p className="MobileAddPic">Add Profile Picture</p>
+                              </div>
                                 
 
                             }
                         </div>
                     )}
-                  {/* </div> */}
+                    </Dropzone>
+                </button>
+
+                    
+
+                <div id='DropzoneBox'>
+                  <Dropzone 
+                    id="DropzoneChild"
+                     onDropAccepted={this.getSignedRequest}
+                    
+                     accept='image/*'
+                     multiple={false}
+                    >  
+                    { () => (
+                      <div className="UploadBox">
+                            {
+                              isUploading 
+                              ?  <GridLoader 
+                              style={{}}/>
+                              : <div className="DropzoneText"> 
+                                <p className="DesktopAddPic">Drop Profile Picture or Click Here</p>
+                                <p className="MobileAddPic">Add Profile Picture</p>
+                              </div>
+                                
+
+                            }
+                        </div>
+                    )}
                     </Dropzone>
                 </div>
                 <div id="RegisterInputs">

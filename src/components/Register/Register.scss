@@ -39,7 +39,11 @@ html {
                 background-color: rgba(255,255,255,.01);
                 border-top: 0px;
                 border-right:0px;
+                border-color: $mobile-input-border; 
+
+                @include desktop {
                 border-color: $desktop-input-border; 
+                }
         }
         
         
@@ -74,7 +78,7 @@ html {
         border-radius: 5px;
 
         @include desktop {
-            background-color: white ;
+            background-color: grey ;
             position: 'relative';
             width: 200px;
             height: 200px;
@@ -91,12 +95,21 @@ html {
 
         *{
             border: none !important;
-            // margin: 0 auto;
             padding: 0;
             width: 80px;
             height: 40px !important;
             font-size: 15px;
             position: relative;
+        }
+
+        .UploadBox{
+
+            .DropzoneText {
+                
+                .DesktopAddPic{
+                    display: none
+                }
+            }
         }
 
         // #DropzoneChild{
