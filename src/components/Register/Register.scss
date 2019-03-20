@@ -1,0 +1,107 @@
+@import '../../variables.scss';
+
+@mixin desktop {
+    @media(min-width: $desktop) {
+        @content
+    }
+}
+
+
+html {
+    height:100%;
+}
+
+.RegisterPage {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+    ::placeholder {
+        color : rgb(0, 0, 0);
+        
+        @include desktop {
+            color: rgb(255,255,255)
+        }
+        
+    }
+
+    #DropzoneBox {
+        margin: 0 auto;
+        padding: 0;
+        width: 80px;
+        overflow: hidden;
+        border: 2px dashed grey;
+        border-radius: 5px;
+
+        @include desktop {
+            background-color: white ;
+            position: 'relative';
+            width: 200px;
+            height: 200px;
+            border-width: 7px;
+            margin-top: 100;
+            border-color: 'rgb(102, 102, 102)';
+            border-style: 'dashed';
+            border-radius: 5;
+            display: 'flex';
+            justify-content: 'center';
+            align-items: 'center';
+            font-size: 28;
+        }
+
+        *{
+            border: none !important;
+            // margin: 0 auto;
+            padding: 0;
+            width: 80px;
+            height: 40px !important;
+            font-size: 15px;
+            position: relative;
+        }
+
+        // #DropzoneChild{
+        //     border: none !important;
+        //     margin: 0 auto;
+        //     padding: 0;
+        //     width: 80px;
+        //     height: 40px !important;
+        //     font-size: 15px;
+
+            
+        //     input{
+        //         border: none !important;
+        //         margin: 0 auto;
+        //         padding: 0;
+        //         width: 80px;
+        //         height: 40px !important;
+        //         font-size: 15px;
+
+
+                
+
+              
+        
+        // }
+        // }
+
+    }
+
+}
+
+
+/* #DropzoneBox{
+  margin: 0 auto;
+  padding: 0;
+  width: 80px;
+  overflow: hidden;
+  border: 2px dashed grey;
+  border-radius: 5px;
+}
+#DropzoneBox *{
+  border: none !important;
+  margin: 0 auto;
+  padding: 0;
+  width: 80px;
+  height: 40px !important;
+  font-size: 15px;
+} */

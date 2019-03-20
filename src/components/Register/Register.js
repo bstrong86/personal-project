@@ -6,6 +6,7 @@ import RecentWorkouts from '../RecentWorkouts/RecentWorkouts';
 import Dropzone from 'react-dropzone'
 import {GridLoader} from 'react-spinners'
 import{v4 as randomString} from 'uuid'
+import './Register.css'
 
 
 class Auth extends Component {
@@ -99,45 +100,55 @@ class Auth extends Component {
 
 
     render() {
-        console.log(this.state)
         const {username, password, url, isUploading} = this.state
         return (
-            <div>
+            <div className="RegisterPage">
                 <h1>Upload</h1>
                     <img src={url} alt="" width="200px" />
 
+                <div className="DropzoneBox" id='DropzoneBox'>
                   <Dropzone 
-                    onDropAccepted={this.getSignedRequest}
-                    style={{
-                    position: 'relative',
-                    width: 200,
-                    height: 200,
-                    borderWidth: 7,
-                    marginTop: 100,
-                    borderColor: 'rgb(102, 102, 102)',
-                    borderStyle: 'dashed',
-                    borderRadius: 5,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: 28,
-                    }}
-                    accept='image/*'
-                    multiple={false} 
-                >  
+                    id="DropzoneChild"
+                     onDropAccepted={this.getSignedRequest}
+                    //  style={{
+                    //  position: 'center',
+                    //  width: 200,
+                    //  height: 200,
+                    //  borderWidth: 7,
+                    //  marginTop: 100,
+                    //  borderColor: 'rgb(102, 102, 102)',
+                    //  borderStyle: 'dashed',
+                    //  borderRadius: 5,
+                    //  display: 'flex',
+                    //  justifyContent: 'center',
+                    //  alignItems: 'center',
+                    //  fontSize: 28,
+                    //  }}
+                     accept='image/*'
+                     multiple={false}
+                    >  
+                  {/* <div className="AddProfilePic"> */}
                     { () => (
-                        <div>
+                      <div className="UploadBox">
                             {
-                                isUploading 
-                                ?  <GridLoader />
-                                : <p>Drop File or Click Here</p>
+                              isUploading 
+                              ?  <GridLoader 
+                              style={{}}/>
+                              : <p>Drop File or Click Here</p>
+
                             }
                         </div>
                     )}
-                </Dropzone>
-                <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
-                <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
-                <button onClick={this.handleRegisterButton}>Create Profile</button>
+                  {/* </div> */}
+                    </Dropzone>
+                </div>
+                <div className="RegisterInputs">
+                  <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
+                  <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
+                </div>
+                <div className="RegisterButton">
+                  <button onClick={this.handleRegisterButton}>Create Profile</button>
+                </div>
                 
                 
             </div>

@@ -6,9 +6,14 @@ $roboto-font: 'Roboto Slab';
 
 // Colors
 $mobile-background-image: -webkit-linear-gradient(rgb(245, 242, 80),rgb(224, 91, 191));
-$secondary-color: white
+$desktop-background-image: -webkit-linear-gradient(rgb(125, 24, 192), rgb(9, 142, 204));
+$secondary-color: white;
 
 // Responsive
-// $desktop: 
+$desktop: 850px;
+
+// buttons
+$mobile-button-color: -webkit-linear-gradient(rgb(224, 91, 191), rgb(245, 242, 80));
+$desktop-button-color: -webkit-linear-gradient( rgb(9, 142, 204), rgb(125, 24, 192));
 
 

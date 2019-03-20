@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+html {
+  height: 100%;
+}
+
+.RegisterPage {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.RegisterPage ::-webkit-input-placeholder {
+  color: black;
+}
+
+.RegisterPage :-ms-input-placeholder {
+  color: black;
+}
+
+.RegisterPage ::-ms-input-placeholder {
+  color: black;
+}
+
+.RegisterPage ::placeholder {
+  color: black;
+}
+
+@media (min-width: 850px) {
+  .RegisterPage ::-webkit-input-placeholder {
+    color: white;
+  }
+  .RegisterPage :-ms-input-placeholder {
+    color: white;
+  }
+  .RegisterPage ::-ms-input-placeholder {
+    color: white;
+  }
+  .RegisterPage ::placeholder {
+    color: white;
+  }
+}
+
+.RegisterPage #DropzoneBox {
+  margin: 0 auto;
+  padding: 0;
+  width: 80px;
+  overflow: hidden;
+  border: 2px dashed grey;
+  border-radius: 5px;
+}
+
+@media (min-width: 850px) {
+  .RegisterPage #DropzoneBox {
+    background-color: white;
+    position: 'relative';
+    width: 200px;
+    height: 200px;
+    border-width: 7px;
+    margin-top: 100;
+    border-color: 'rgb(102, 102, 102)';
+    border-style: 'dashed';
+    border-radius: 5;
+    display: 'flex';
+    -webkit-box-pack: 'center';
+        -ms-flex-pack: 'center';
+            justify-content: 'center';
+    -webkit-box-align: 'center';
+        -ms-flex-align: 'center';
+            align-items: 'center';
+    font-size: 28;
+  }
+}
+
+.RegisterPage #DropzoneBox * {
+  border: none !important;
+  padding: 0;
+  width: 80px;
+  height: 40px !important;
+  font-size: 15px;
+  position: relative;
+}
+
+/* #DropzoneBox{
+  margin: 0 auto;
+  padding: 0;
+  width: 80px;
+  overflow: hidden;
+  border: 2px dashed grey;
+  border-radius: 5px;
+}
+#DropzoneBox *{
+  border: none !important;
+  margin: 0 auto;
+  padding: 0;
+  width: 80px;
+  height: 40px !important;
+  font-size: 15px;
+} */
+/*# sourceMappingURL=Register.css.map */

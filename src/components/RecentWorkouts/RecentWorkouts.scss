@@ -1,3 +1,11 @@
+@import '../../variables.scss';
+
+@mixin desktop {
+    @media(min-width: $desktop) {
+        @content
+    }
+}
+
 .RecentWorkouts {
     // background-color: white;
     background-color: rgba(255,255,255,.05);
@@ -8,13 +16,20 @@
     margin:5px;
     justify-content: space-between;
 
+    @include desktop {
+        color: rgb(255,255,255)
+    }
+
 
     .UserPic {
         display:none;
+
+        @include desktop {
+            display:block;
+        }
     }
 
     .Username {
-        color: red;
         margin:5px;
 
 

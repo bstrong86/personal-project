@@ -104,6 +104,7 @@ class Auth extends Component {
                         <button onClick={this.login} >Login</button>
                         <button onClick={this.handleRegisterButton}>Register</button>
                     </div>
+                <div className="QuoteBox">quote box</div>
                 </div>
                     <section className="WorkoutList">
                         <h3>List of Recent Workouts</h3>
