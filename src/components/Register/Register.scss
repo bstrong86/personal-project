@@ -25,6 +25,46 @@ html {
         
     }
 
+    #RegisterInputs {
+        display:flex;
+        width:100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            margin:5px;
+                height: 35px;
+                width: 50%;
+                background-color: rgba(255,255,255,.01);
+                border-top: 0px;
+                border-right:0px;
+                border-color: $desktop-input-border; 
+        }
+        
+        
+    }
+
+    .RegisterButton{
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        button{
+            width: 50%;
+            height: 35px;
+            background-image: $mobile-button-color;
+            border-radius: 25px;
+    
+            @include desktop {
+                background-image: $desktop-button-color;
+                color: rgb(255,255,255);
+            }
+        }
+    }
+
     #DropzoneBox {
         margin: 0 auto;
         padding: 0;

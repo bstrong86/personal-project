@@ -94,6 +94,10 @@ class Auth extends Component {
       handleRegisterButton = () => {
           this.register();
       }
+
+      backToLogin = () =>{
+        this.props.history.push('/')
+      }
    
       
 
@@ -106,7 +110,7 @@ class Auth extends Component {
                 <h1>Upload</h1>
                     <img src={url} alt="" width="200px" />
 
-                <div className="DropzoneBox" id='DropzoneBox'>
+                <div id='DropzoneBox'>
                   <Dropzone 
                     id="DropzoneChild"
                      onDropAccepted={this.getSignedRequest}
@@ -135,6 +139,7 @@ class Auth extends Component {
                               ?  <GridLoader 
                               style={{}}/>
                               : <p>Drop File or Click Here</p>
+                                
 
                             }
                         </div>
@@ -142,12 +147,13 @@ class Auth extends Component {
                   {/* </div> */}
                     </Dropzone>
                 </div>
-                <div className="RegisterInputs">
+                <div id="RegisterInputs">
                   <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
                   <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
                 </div>
-                <div className="RegisterButton">
-                  <button onClick={this.handleRegisterButton}>Create Profile</button>
+                  <div className="RegisterButton">
+                    <button onClick={this.handleRegisterButton}>Create Profile</button>
+                    <button onClick={this.backToLogin}>Back to Login</button>
                 </div>
                 
                 

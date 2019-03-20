@@ -40,6 +40,64 @@ html {
   }
 }
 
+.RegisterPage #RegisterInputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.RegisterPage #RegisterInputs input {
+  margin: 5px;
+  height: 35px;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.01);
+  border-top: 0px;
+  border-right: 0px;
+  border-color: -webkit-linear-gradient(left to right #098ecc, #7d18c0);
+}
+
+.RegisterPage .RegisterButton {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.RegisterPage .RegisterButton button {
+  width: 50%;
+  height: 35px;
+  background-image: -webkit-linear-gradient(#e05bbf, #f5f250);
+  border-radius: 25px;
+}
+
+@media (min-width: 850px) {
+  .RegisterPage .RegisterButton button {
+    background-image: -webkit-linear-gradient(#098ecc, #7d18c0);
+    color: white;
+  }
+}
+
 .RegisterPage #DropzoneBox {
   margin: 0 auto;
   padding: 0;

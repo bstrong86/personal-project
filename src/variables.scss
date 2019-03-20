@@ -8,6 +8,11 @@ $roboto-font: 'Roboto Slab';
 $mobile-background-image: -webkit-linear-gradient(rgb(245, 242, 80),rgb(224, 91, 191));
 $desktop-background-image: -webkit-linear-gradient(rgb(125, 24, 192), rgb(9, 142, 204));
 $secondary-color: white;
+$mobile-input-background: rgba(224,91,191, .05);
+$desktop-input-background: -webkit-linear-gradient(left to right rgba(129, 209, 247, .05), rgba(125, 24, 192, .05));
+$mobile-input-border: rgb(224, 91, 191);
+$desktop-input-border: rgb(9, 142, 204);
+
 
 // Responsive
 $desktop: 850px;
