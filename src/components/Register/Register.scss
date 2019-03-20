@@ -15,6 +15,20 @@ html {
     margin: 0;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img {
+        margin:10px;
+    }
+
+    h1 {
+        color: white;
+        text-shadow: 2px 2px #e05bbf;
+
+    }
 
     ::placeholder {
         color : rgb(0, 0, 0);
@@ -51,6 +65,7 @@ html {
 
     .RegisterButton{
         height: 100px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -69,7 +84,54 @@ html {
         }
     }
 
+    #DropzoneButton {
+        width: 50%;
+        height: 35px;
+        background-image: $mobile-button-color;
+        border-radius: 25px;
+        position:relative;
+        padding:0px;
+    
+        @include desktop {
+           background-image: $desktop-button-color;
+           color: rgb(255,255,255);
+        }
+
+        #DropzoneButtonChild {
+
+            *{
+                height:35px !important;
+                width: 100% !important;
+                border:none !important;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                border-radius: 25px;
+                margin: 0px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+    
+            }
+
+        }
+
+
+
+        *{
+            height:35px !important;
+            width: 100% !important;
+            border:none !important;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border-radius: 25px;
+
+        }
+    }
+
     #DropzoneBox {
+        display:none;
         margin: 0 auto;
         padding: 0;
         width: 80px;
@@ -78,18 +140,18 @@ html {
         border-radius: 5px;
 
         @include desktop {
+            display: flex;
             background-color: grey ;
-            position: 'relative';
+            position: relative;
             width: 200px;
             height: 200px;
             border-width: 7px;
             margin-top: 100;
-            border-color: 'rgb(102, 102, 102)';
-            border-style: 'dashed';
+            border-color: rgb(102, 102, 102);
+            border-style: dashed;
             border-radius: 5;
-            display: 'flex';
-            justify-content: 'center';
-            align-items: 'center';
+            justify-content: center;
+            align-items: center;
             font-size: 28;
         }
 
@@ -102,15 +164,7 @@ html {
             position: relative;
         }
 
-        .UploadBox{
-
-            .DropzoneText {
-                
-                .DesktopAddPic{
-                    display: none
-                }
-            }
-        }
+        
 
         // #DropzoneChild{
         //     border: none !important;

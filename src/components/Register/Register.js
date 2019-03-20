@@ -111,22 +111,20 @@ class Auth extends Component {
                     <img src={url} alt="" width="200px" />
                 <button id='DropzoneButton'>
                   <Dropzone 
-                    id="DropzoneChild"
+                    id="DropzoneButtonChild"
                      onDropAccepted={this.getSignedRequest}
                     
                      accept='image/*'
                      multiple={false}
                     >  
                     { () => (
-                      <div className="UploadBox">
+                      <div className="ButtonUploadBox">
                             {
                               isUploading 
                               ?  <GridLoader 
                               style={{}}/>
-                              : <div className="DropzoneText"> 
-                                <p className="DesktopAddPic">Drop Profile Picture or Click Here</p>
-                                <p className="MobileAddPic">Add Profile Picture</p>
-                              </div>
+                              : <p>Add Profile Picture</p>
+                              
                                 
 
                             }
@@ -151,10 +149,7 @@ class Auth extends Component {
                               isUploading 
                               ?  <GridLoader 
                               style={{}}/>
-                              : <div className="DropzoneText"> 
-                                <p className="DesktopAddPic">Drop Profile Picture or Click Here</p>
-                                <p className="MobileAddPic">Add Profile Picture</p>
-                              </div>
+                              : <p>Drop Profile Picture or Click Here</p>
                                 
 
                             }
