@@ -2,58 +2,66 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import Workout from '../../components/Workout/Workout'
 import {connect} from 'react-redux'
-import {updateUser, updateWorkout} from '../../ducks/auth_reducer'
+import {updateUser, updateWorkout,updateWorkoutList} from '../../ducks/auth_reducer'
 import {Link} from 'react-router-dom'
 import SearchResults from '../SearchResult/SearchResult';
+import './Profile.scss'
 
 class Profile extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            workouts: [],
             search:'',
             searchResult:[],
+            disabled: true,
         }
     }
     componentDidMount(){
-        this.getWorkouts()
         let backButton = document.getElementById("backButton")
         backButton.style.display = "none"
-        
     }
 
+    componentDidUpdate(prevProps) {
+        if (!prevProps.user_id && this.props.user_id) {
+            this.getWorkouts(this.props.user_id)
+        }
+    }
 
-    getWorkouts = async () => {
-        const {user_id} = this.props
-        let res = await axios.get(`/auth/workouts/${user_id}`)
-        this.setState({
-            workouts: res.data
-        })
-        
+    getWorkouts = async userId => {
+        let res = await axios.get(`/auth/workouts/${userId}`)
+        this.props.updateWorkoutList(res.data)
     }
       
     handleChange = async (prop, val) => {
         this.setState({
           [prop]:val
         })
+        if(this.state.search === ""){
+            this.setState({
+                disabled : false
+            })
+        }
     }
     handleBackToWorkouts = async () => {
         this.setState({
-            searchResult: []
+            searchResult: [],
+            search:''
         })
         let workouts = document.getElementById("mappedWorkouts")
         let backButton = document.getElementById("backButton")
         let searchButton = document.getElementById("searchButton")
+        let searchListDisplay = document.getElementById("mappedSearchResults")
         searchButton.style.display = "block"
         workouts.style.display = "block"
         backButton.style.display = "none"
+        searchListDisplay.style.display = "none"
         
 
     }
     handleSearch = async () => {
-        const {workouts, search} = this.state
-        let searchedWorkout = workouts.filter(workout => workout.workout_name.includes(search))
+        const {workout_list} = this.props
+        let searchedWorkout = workout_list.filter(workout => workout.workout_name.includes(this.state.search))
             this.setState({
                 searchResult: searchedWorkout,
             })
@@ -71,10 +79,13 @@ class Profile extends Component {
                     results.style.display = "none"
                 }}
         let backButton = document.getElementById("backButton")
-            backButton.style.display = "block"        
+            backButton.style.display = "block"
+            let searchListDisplay = document.getElementById("mappedSearchResults")
+            searchListDisplay.style.display = "block"
+       
     }
     render() {
-        const mappedWorkouts = this.state.workouts.map((workout) => {
+        const mappedWorkouts = this.props.workout_list.map((workout) => {
             return (
                 <Workout
                     key={workout.workout_id}
@@ -95,13 +106,14 @@ class Profile extends Component {
             )
         })
         return (
-            <div>Workouts
-                <input placeholder= "search" onChange={e => {this.handleChange("search", e.target.value)}}/>
-                <button onClick={this.handleSearch} id ="searchButton">Search</button>
+            <div className="ProfileWorkoutList">
+                <input value= {this.state.search} className="SearchWorkouts" id="searchInput" placeholder= "search" onChange={e => {this.handleChange("search", e.target.value)}}/>
+                <button disabled={this.state.disabled} onClick={this.handleSearch} id ="searchButton">Search</button>
                 <button onClick={this.handleBackToWorkouts} id ="backButton">Back to Workouts</button>
-                <Link to='/profile/create'>
+                <Link className="AddNewWorkoutBox" to='/profile/create'>
                     <button>Add New Workout</button>
                 </Link>
+                <h2 className="WorkoutListHeader">Workouts</h2>
                 <div id = "mappedWorkouts">{mappedWorkouts}</div>
                 <div id = "mappedSearchResults">{mappedSearchResults}</div>
 
@@ -111,12 +123,21 @@ class Profile extends Component {
     
 }
 const mapStateToProps = reduxState => {
-    return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
+    return {
+        workout_list: reduxState.auth_reducer.workout_list,
+        user_id: reduxState.auth_reducer.user_id,
+        username: reduxState.auth_reducer.username,
+        profile_pic: reduxState.auth_reducer.profile_pic,
+        workout_name: reduxState.auth_reducer.workout_name,
+        workout_id: reduxState.auth_reducer.workout_id
+
+    }
 
 }
 const mapDispatchToProps = {
     updateUser,
-    updateWorkout
+    updateWorkout,
+    updateWorkoutList
 }
 
 

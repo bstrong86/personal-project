@@ -1,17 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
 .App {
   text-align: center;
 }
 
-.App-logo {
-  -webkit-animation: App-logo-spin infinite 20s linear;
-          animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+html {
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-image: -webkit-linear-gradient(#f5f250, #e05bbf);
+  background-repeat: none;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media (min-width: 850px) {
+  body {
+    background-image: -webkit-linear-gradient(#7d18c0, #098ecc);
+  }
+}
+
+.LoginPage {
+  margin: 0;
+}
+
+.LoginPage ::-webkit-input-placeholder {
+  color: black;
+}
+
+.LoginPage :-ms-input-placeholder {
+  color: black;
+}
+
+.LoginPage ::-ms-input-placeholder {
+  color: black;
+}
+
+.LoginPage ::placeholder {
+  color: black;
+}
+
+@media (min-width: 850px) {
+  .LoginPage ::-webkit-input-placeholder {
+    color: white;
+  }
+  .LoginPage :-ms-input-placeholder {
+    color: white;
+  }
+  .LoginPage ::-ms-input-placeholder {
+    color: white;
+  }
+  .LoginPage ::placeholder {
+    color: white;
+  }
+}
+
+.LoginPage .LoginHeader {
+  position: absolute;
+  height: 30%;
+  width: 100%;
+  background-size: cover;
+  color: black;
+  text-shadow: 2px 2px #e05bbf;
+}
+
+.LoginPage .LoginSection {
+  background-color: none;
+  width: 100%;
+  padding: 5px;
+  position: absolute;
+  top: 10%;
+}
+
+.LoginPage .LoginSection .LoginInputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.LoginPage .LoginSection .LoginButtons {
+  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,36 +103,146 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: calc(10px + 2vmin);
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+button {
+  width: 50%;
+  height: 35px;
+  background-image: -webkit-linear-gradient(#e05bbf, #f5f250);
+  border-radius: 25px;
+}
+
+@media (min-width: 850px) {
+  button {
+    background-image: -webkit-linear-gradient(#098ecc, #7d18c0);
+    color: white;
+  }
+}
+
+input {
+  margin: 5px;
+  height: 35px;
+  width: 50%;
+  border-top: 0px;
+  border-right: 0px;
+  background-color: rgba(224, 91, 191, 0.05);
+  border-color: #e05bbf;
+}
+
+@media (min-width: 850px) {
+  input {
+    border-color: #098ecc;
+  }
+}
+
+.WorkoutList {
+  position: absolute;
+  top: 50%;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+}
+
+.WorkoutList h3 {
   color: white;
+  text-shadow: 2px 2px #e05bbf;
 }
 
-.App-link {
-  color: #61dafb;
+.RecentWorkoutBox {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+.WorkoutListItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+.WorkoutListItem a {
+  color: black;
+  text-decoration: none;
+}
+
+.SearchWorkoutListItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+.SearchWorkoutListItem a {
+  color: black;
+  text-decoration: none;
+}
+
+.ViewWorkoutPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 5px;
+}
+
+.ViewWorkoutPage .MappedExercises {
+  height: 650px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.MappedExercises::-webkit-scrollbar {
+  width: 6px;
+  background-color: black;
+}
+
+.MappedExercises::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: white;
 }
 /*# sourceMappingURL=App.css.map */

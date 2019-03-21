@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+html {
+  height: 100%;
+}
+
+.NavBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50%;
+}
+
+.NavBar .NavBarProfilePic {
+  margin: 5px;
+  height: 80%;
+  width: 20%;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.NavBar .NavBarLogout {
+  width: 25%;
+  height: 35px;
+  background-image: -webkit-linear-gradient(#e05bbf, #f5f250);
+  border-radius: 25px;
+}
+
+.NavBar .NavBarUsername {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  color: black;
+  text-shadow: 2px 2px #e05bbf;
+  font-size: 150%;
+}
+/*# sourceMappingURL=NavBar.css.map */

@@ -14,6 +14,15 @@ class Exercise extends Component {
             buttonDisplay:''
         }
     }
+    
+    componentDidMount(){
+        this.setState({
+            sets: this.props.sets,
+            reps: this.props.reps,
+            weight: this.props.weight
+        })
+    }
+
     handleEdit = () => {
         this.setState({
             disabled: !this.state.disabled,
@@ -51,7 +60,7 @@ class Exercise extends Component {
                 <div>reps</div>
                 <input disabled={(this.state.disabled)} type = "number"  value={this.state.reps} className = "exerciseReps" placeholder= {reps} onChange={e => this.handleChange("reps",e.target.value)}></input>
                 <div>weight</div>
-                <input disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {this.state.weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
+                <input disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
                 
 
                

@@ -97,7 +97,7 @@ class addExercise extends Component {
                 <input value={this.state.reps} type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
                 <input value={this.state.weight} type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
                 <button onClick= {this.handleAddButton}>Add Exercise</button>
-                <button onClick={this.handleFinishButton}>Finish</button>
+                <button onClick={this.handleFinishButton}>Back to Workout</button>
                 <div>{mappedExercises}</div>
             </div>
             

@@ -79,6 +79,7 @@ module.exports = {
             let users_id = id
             let workouts = await db.get_workouts({users_id})
             res.status(200).send(workouts)
+            console.log()
         }catch (err) {
             console.log(err + ' get workoutserror')
         }

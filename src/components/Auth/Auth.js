@@ -3,7 +3,6 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { updateUser } from '../../ducks/auth_reducer'
 import RecentWorkouts from '../RecentWorkouts/RecentWorkouts';
-import './Auth.css'
 
 
 

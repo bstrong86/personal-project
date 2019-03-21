@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+html {
+  height: 100%;
+}
+
+.ProfileWorkoutList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.ProfileWorkoutList .SearchWorkouts {
+  margin: 5px;
+  height: 35px;
+  width: 50%;
+  border-top: 0px;
+  border-right: 0px;
+  background-color: rgba(224, 91, 191, 0.05);
+  border-color: #e05bbf;
+}
+
+.ProfileWorkoutList .AddNewWorkoutBox {
+  height: 100%;
+  width: 100%;
+}
+
+.ProfileWorkoutList #mappedWorkouts {
+  height: 400px;
+  width: 80%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ProfileWorkoutList #mappedWorkouts::-webkit-scrollbar {
+  width: 6px;
+  background-color: black;
+}
+
+.ProfileWorkoutList #mappedWorkouts::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: white;
+}
+
+.ProfileWorkoutList #mappedSearchResults {
+  height: 400px;
+  width: 80%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: none;
+}
+
+.ProfileWorkoutList #mappedSearchResults::-webkit-scrollbar {
+  width: 6px;
+  background-color: black;
+}
+
+.ProfileWorkoutList #mappedSearchResults::-webkit-scrollbar-thumb {
+  width: 6px;
+  background-color: white;
+}
+/*# sourceMappingURL=Profile.css.map */

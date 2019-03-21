@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export default function Workout(props) {
     const {name, id} = props
     return (
-        <div>
+        <div className="WorkoutListItem">
             <Link to = {`/profile/viewWorkout/${id}`}>
                 <div>{name}</div>
                 

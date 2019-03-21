@@ -42,6 +42,7 @@ class Auth extends Component {
         }catch (err) {
             alert("choose different username")
         }
+        this.props.history.push('/profile')
     }
     getSignedRequest = ([file]) => {
         console.log([file])

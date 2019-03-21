@@ -3,6 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateUser, clearUser} from '../../ducks/auth_reducer'
 import {withRouter} from 'react-router-dom'
+import '../NavBar/NavBar.scss'
 
 class NavBar extends Component {
     componentDidMount(){
@@ -32,10 +33,10 @@ class NavBar extends Component {
         
         if(this.props.location.pathname !== '/' && this.props.location.pathname !=='/auth/register'){
         return (
-            <div>
-                <h3>{username}</h3>
-                <img onClick={this.goToProfile} src={profile_pic} alt={username}/>
-                <button onClick={this.logout}>Logout</button>
+            <div className="NavBar">
+                <img className="NavBarProfilePic" onClick={this.goToProfile} src={profile_pic} alt={username}/>
+                <h3 className="NavBarUsername">{username}</h3>
+                <button className="NavBarLogout" onClick={this.logout}>Logout</button>
             </div>
         )} else {
             return (

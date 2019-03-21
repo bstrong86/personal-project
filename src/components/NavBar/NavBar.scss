@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+@mixin desktop {
+    @media(min-width: $desktop) {
+        @content
+    }
+}
+
+html {
+    height: 100%;
+}
+
+.NavBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+
+    .NavBarProfilePic {
+        margin:5px;
+        height: 80%;
+        width: 20%;
+        border-radius: 50%;
+        border: 2px solid black
+    }
+
+    .NavBarLogout {
+        width: 25%;
+        height: 35px;
+        background-image: $mobile-button-color;
+        border-radius: 25px;
+    }
+
+    .NavBarUsername {
+        // position:absolute;
+        height: 100%;
+        width: 100%;
+        background-size:cover;
+        color: black;
+        text-shadow: 2px 2px #e05bbf;
+        font-size: 150%;
+    }
+}
