@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import SearchResults from '../SearchResult/SearchResult';
 import './Profile.scss'
 
+
 class Profile extends Component {
     constructor(props) {
         super(props)
@@ -20,7 +21,19 @@ class Profile extends Component {
     componentDidMount(){
         let backButton = document.getElementById("backButton")
         backButton.style.display = "none"
+        this.getWorkouts()
+        // this.getMarvelPic()
     }
+
+    // getMarvelPic = async () =>{
+    //     let url =`https://gateway.marvel.com:443/v1/public/characters?apikey=6eaf49b75fa40c1a9d9bacc61a54c728`
+    //     let ts = new Date().getTime()
+    //     let hash = CryptoJS.MD5(ts+PRIVATE_API_KEY+PUBLIC_API_KEY)
+    //     url +="&ts="+ts+"&hash="+hash
+    //     let res = await axios.get(url)
+    //         console.log(res.data)
+    // }
+    
 
     componentDidUpdate(prevProps) {
         if (!prevProps.user_id && this.props.user_id) {
@@ -85,6 +98,8 @@ class Profile extends Component {
        
     }
     render() {
+        console.log(111111, this.props)
+
         const mappedWorkouts = this.props.workout_list.map((workout) => {
             return (
                 <Workout
@@ -106,6 +121,7 @@ class Profile extends Component {
             )
         })
         return (
+            
             <div className="ProfileWorkoutList">
                 <input value= {this.state.search} className="SearchWorkouts" id="searchInput" placeholder= "search" onChange={e => {this.handleChange("search", e.target.value)}}/>
                 <button disabled={this.state.disabled} onClick={this.handleSearch} id ="searchButton">Search</button>

@@ -22,6 +22,7 @@ class Exercise extends Component {
             weight: this.props.weight
         })
     }
+    
 
     handleEdit = () => {
         this.setState({
@@ -44,10 +45,10 @@ class Exercise extends Component {
             [prop]: value
         })
     }
-    deleteExercise = () => {
-        const {exercise_id, workout_id} = this.props        
+    deleteExercise = async () => {
+        const {exercise_id} = this.props        
         axios.delete(`/auth/exercise/${exercise_id}`)
-        // this.props.history.push(`/auth/viewWorkout/${workout_id}`)
+        this.props.getExercises()
     }
 
     render() {        

@@ -1,13 +1,19 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {updateExerciseList} from '../../ducks/exercise_reducer'
 
 class ShowAddedExercises extends Component {
     constructor(props) {
     super(props)
     }
-    removeExercise = () => {
+    removeExercise = async () => {
         const {id} = this.props
-        axios.delete(`/auth/exercise/${id}`)
+        await axios.delete(`/auth/exercise/${id}`)
+        let res = await axios.get(`/auth/exercises/${id}`)
+        this.props.updateExerciseList(res.data)
+
+
     }
     render() {
         return (
@@ -19,5 +25,16 @@ class ShowAddedExercises extends Component {
         )
     }
 }
+const mapStateToProps = reduxState => {
+    console.log(reduxState)
+    return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
 
-export default (ShowAddedExercises)
+}
+const mapDispatchToProps = {
+    updateExerciseList
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowAddedExercises)

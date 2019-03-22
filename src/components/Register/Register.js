@@ -15,14 +15,16 @@ class Auth extends Component {
 
         this.state = {
             isUploading: false,
-            url:"https://robohash.org/"+randomString(),
+            url:"",
             username: '',
             password: '',
             profile_pic:'',
             recentWorkouts: []
         }
     }
-
+    componentDidMount(){
+      this.getMarvelPic()
+    }
 
     handleChange(prop, val) {
         this.setState({
@@ -44,8 +46,17 @@ class Auth extends Component {
         }
         this.props.history.push('/profile')
     }
+    getMarvelPic = async () => {
+        let id = Math.floor(Math.random()*(1009299-1009290)+1009290)
+        let res = await axios.get(`/auth/profile_pic/${id}`)
+        const {path, extension} = res.data
+        let url = path+"/portrait_medium."+extension
+        this.setState({
+          url
+        })
+    }
+
     getSignedRequest = ([file]) => {
-        console.log([file])
         this.setState({isUploading: true})
      
         const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
@@ -56,7 +67,6 @@ class Auth extends Component {
             'file-type': file.type
           }
         }).then( (response) => {
-            console.log(response)
           const { signedRequest, url } = response.data 
           this.uploadFile(file, signedRequest, url)
         }).catch( err => {
@@ -73,7 +83,6 @@ class Auth extends Component {
         axios
           .put(signedRequest, file, options)
           .then(response => {
-              console.log(url)
             this.setState({ isUploading: false, url });
           })
           .catch(err => {
@@ -97,6 +106,9 @@ class Auth extends Component {
       }
 
       backToLogin = () =>{
+        this.setState({
+          url:""
+        })
         this.props.history.push('/')
       }
    

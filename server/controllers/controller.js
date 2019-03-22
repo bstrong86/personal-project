@@ -1,4 +1,7 @@
 const bcrypt = require('bcryptjs')
+const CryptoJS = require('react-native-crypto-js')
+const axios = require('axios')
+
 module.exports = {
     login: async (req, res) => {
         const {username, password} = req.body
@@ -79,7 +82,6 @@ module.exports = {
             let users_id = id
             let workouts = await db.get_workouts({users_id})
             res.status(200).send(workouts)
-            console.log()
         }catch (err) {
             console.log(err + ' get workoutserror')
         }
@@ -133,5 +135,14 @@ module.exports = {
             console.log(err)
         }
     },
+    getMarvelPic: async (req, res) =>{
+        const {id} = req.params
+        let url =`https://gateway.marvel.com:443/v1/public/characters/${id}?`
+        let ts = new Date().getTime()
+        let hash = CryptoJS.MD5(ts+process.env.REACT_APP_PRIVATE_API_KEY+process.env.REACT_APP_PUBLIC_API_KEY)
+        url +="&ts="+ts+"&apikey="+process.env.REACT_APP_PUBLIC_API_KEY+"&hash="+hash
+        image = await axios.get(url)
+            res.status(200).send(image.data.data.results[0].thumbnail)
+    }
    
 }
