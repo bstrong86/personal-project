@@ -22,17 +22,17 @@ class addExercise extends Component {
     
     
     getExercises = async () => {
+        console.log(2222)
         const {id} = this.props.match.params
         let res = await axios.get(`/auth/exercises/${id}`)
         this.props.updateExerciseList(res.data)
-        console.log(res.data)
     }
     
     
     
     createExercise = async () => {
         const newExercise = {
-            exercise_name: this.state.name,
+            exercise_name: this.state.name.toUpperCase(),
             sets: this.state.sets,
             reps: this.state.reps,
             weight: this.state.weight,
@@ -48,7 +48,6 @@ class addExercise extends Component {
         } catch (err) {
             console.log(err)
         }
-        this.history.push(`/auth/addexercise/${this.props.workout_id}`)
     }
     handleChange = (prop, val) => {
         this.setState({
@@ -72,35 +71,34 @@ class addExercise extends Component {
         this.props.history.goBack()
     }
     
-    render() {console.log(this.props)
-        
+    render() {
         const mappedExercises = this.props.exercise_list.map((exercise) => {
             return (
                 <ShowAddedExercises
                 key={exercise.exercise_id}
                 name={exercise.exercise_name}
                 id={exercise.exercise_id}
+                getExercises={this.getExercises}
                 />
             )
         })
         
         return (
-            <div>
-                <h3>Add Exercises</h3>
-                <input value={this.state.name} placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
+            <div className="AddExercisePage">
+                <h3 className="AddExerciseHeader">Add Exercises</h3>
+                <input maxLength={24} value={this.state.name} placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
                 <input  value={this.state.sets} type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
                 <input value={this.state.reps} type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
                 <input value={this.state.weight} type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
                 <button onClick= {this.handleAddButton}>Add Exercise</button>
                 <button onClick={this.handleFinishButton}>Back to Workout</button>
-                <div>{mappedExercises}</div>
+                <div className="MappedExerciseBox">{mappedExercises}</div>
             </div>
             
         )
     }
 }
 const mapStateToProps = reduxState => {
-    console.log(reduxState)
     return {
         workout_id: reduxState.auth_reducer.workout_id,
         workout_name: reduxState.auth_reducer.workout_name,

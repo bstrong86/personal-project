@@ -12,6 +12,7 @@ const CLEAR_USER = "CLEAR_USER"
 const UPDATE_WORKOUT ="UPDATE_WORKOUT"
 const CLEAR_WORKOUT = "CLEAR_WORKOUT"
 const UPDATE_WORKOUTLIST = "UPDATE_WORKOUTLIST"
+const CLEAR_WORKOUTLIST= "CLEAR_WORKOUTLIST"
 
 export function updateUser(user) {
     return {
@@ -42,7 +43,11 @@ export function updateWorkoutList(workout_list){
         payload: workout_list
     }
 }
-
+export function clearWorkoutList(){
+    return{
+        type: CLEAR_WORKOUTLIST
+    }
+}
 export default function auth_reducer(state = initialState, action) {
     const {type, payload} = action
     switch (type) {
@@ -58,6 +63,8 @@ export default function auth_reducer(state = initialState, action) {
         return {...state, workout_id:0, workout_name: ''}
     case UPDATE_WORKOUTLIST:
         return {...state, workout_list: [...payload]}
+    case CLEAR_WORKOUTLIST:
+        return {...state, workout_list:[]}
     default:
          return state
     }

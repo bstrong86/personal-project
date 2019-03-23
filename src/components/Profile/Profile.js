@@ -22,17 +22,9 @@ class Profile extends Component {
         let backButton = document.getElementById("backButton")
         backButton.style.display = "none"
         this.getWorkouts()
-        // this.getMarvelPic()
     }
 
-    // getMarvelPic = async () =>{
-    //     let url =`https://gateway.marvel.com:443/v1/public/characters?apikey=6eaf49b75fa40c1a9d9bacc61a54c728`
-    //     let ts = new Date().getTime()
-    //     let hash = CryptoJS.MD5(ts+PRIVATE_API_KEY+PUBLIC_API_KEY)
-    //     url +="&ts="+ts+"&hash="+hash
-    //     let res = await axios.get(url)
-    //         console.log(res.data)
-    // }
+    
     
 
     componentDidUpdate(prevProps) {
@@ -98,7 +90,6 @@ class Profile extends Component {
        
     }
     render() {
-        console.log(111111, this.props)
 
         const mappedWorkouts = this.props.workout_list.map((workout) => {
             return (

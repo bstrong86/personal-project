@@ -63,7 +63,7 @@ body {
   width: 100%;
   background-size: cover;
   color: black;
-  text-shadow: 2px 2px #e05bbf;
+  text-shadow: 1px 1px #e05bbf;
 }
 
 .LoginPage .LoginSection {
@@ -93,6 +93,45 @@ body {
 
 .LoginPage .LoginSection .LoginButtons {
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.LoginPage .WorkoutList {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+}
+
+.LoginPage .WorkoutList h3 {
+  color: white;
+  text-shadow: 2px 2px #7d18c0;
+}
+
+.LoginPage .RecentWorkoutBox {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -157,7 +196,7 @@ input {
 
 .WorkoutList h3 {
   color: white;
-  text-shadow: 2px 2px #e05bbf;
+  text-shadow: 1px 1px #e05bbf;
 }
 
 .RecentWorkoutBox {
@@ -193,6 +232,7 @@ input {
 .WorkoutListItem a {
   color: black;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .SearchWorkoutListItem {
@@ -244,5 +284,77 @@ input {
 .MappedExercises::-webkit-scrollbar-thumb {
   width: 6px;
   background-color: white;
+}
+
+.AddExercisePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+}
+
+.AddExercisePage .AddExerciseHeader {
+  text-shadow: 1px 1px #e05bbf;
+  margin: 10px;
+}
+
+.AddExercisePage .MappedExerciseBox {
+  height: 220px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.AddExercisePage .MappedExerciseBox::-webkit-scrollbar {
+  width: 20px;
+  background-color: rgba(125, 24, 192, 0.1);
+  border-radius: 15px;
+}
+
+.AddExercisePage .MappedExerciseBox::-webkit-scrollbar-thumb {
+  width: 20px;
+  background-color: #e05bbf;
+  border-radius: 15px;
+}
+
+.AddExercisePage button {
+  margin: 5px;
+}
+
+.ShowAddedExercisesPage {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 10px;
+}
+
+.ShowAddedExercisesPage button {
+  margin: 0px 25px;
+  width: 30%;
+}
+
+.ShowAddedExercisesPage .AddedExerciseName {
+  color: black;
+  font-weight: bold;
 }
 /*# sourceMappingURL=App.css.map */

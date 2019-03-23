@@ -20,6 +20,10 @@ html {
   width: 100%;
 }
 
+.ProfileWorkoutList .WorkoutListHeader {
+  text-shadow: 2px 2px #e05bbf;
+}
+
 .ProfileWorkoutList .SearchWorkouts {
   margin: 5px;
   height: 35px;
@@ -43,13 +47,15 @@ html {
 }
 
 .ProfileWorkoutList #mappedWorkouts::-webkit-scrollbar {
-  width: 6px;
-  background-color: black;
+  width: 20px;
+  background-color: rgba(125, 24, 192, 0.1);
+  border-radius: 15px;
 }
 
 .ProfileWorkoutList #mappedWorkouts::-webkit-scrollbar-thumb {
-  width: 6px;
-  background-color: white;
+  width: 20px;
+  background-color: #e05bbf;
+  border-radius: 15px;
 }
 
 .ProfileWorkoutList #mappedSearchResults {
@@ -61,12 +67,14 @@ html {
 }
 
 .ProfileWorkoutList #mappedSearchResults::-webkit-scrollbar {
-  width: 6px;
-  background-color: black;
+  width: 20px;
+  background-color: rgba(125, 24, 192, 0.1);
+  border-radius: 15px;
 }
 
 .ProfileWorkoutList #mappedSearchResults::-webkit-scrollbar-thumb {
-  width: 6px;
-  background-color: white;
+  width: 20px;
+  background-color: #e05bbf;
+  border-radius: 15px;
 }
 /*# sourceMappingURL=Profile.css.map */

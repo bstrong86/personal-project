@@ -78,8 +78,8 @@ module.exports = {
     getWorkouts: async (req, res) => {
         try {
             const db = req.app.get('db')
-            const {id} = req.params
-            let users_id = id
+            const {user_id} = req.session.user
+            let users_id = user_id
             let workouts = await db.get_workouts({users_id})
             res.status(200).send(workouts)
         }catch (err) {

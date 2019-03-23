@@ -37,7 +37,7 @@ class CreateWorkout extends Component {
     }
     handleChange = async (prop, val) => {
         this.setState({
-          [prop]:val
+          [prop]:val.toUpperCase()
         })
     }
     backToWorkouts = () => {
@@ -50,7 +50,7 @@ class CreateWorkout extends Component {
         
         return (
             <div>Workouts
-                <input placeholder="workout name" onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
+                <input placeholder="workout name" maxLength={24} onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
             
                 {/* <Link to={`/profile/addexercise/${workout_id}`}> */}
                     <button onClick={this.createWorkout}>Create Workout Name</button>

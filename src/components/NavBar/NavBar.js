@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {updateUser, clearUser} from '../../ducks/auth_reducer'
+import {updateUser, clearUser,clearWorkoutList} from '../../ducks/auth_reducer'
 import {withRouter} from 'react-router-dom'
 import '../NavBar/NavBar.scss'
 
@@ -27,6 +27,7 @@ class NavBar extends Component {
         await axios.post('/auth/logout')
         this.props.clearUser()
         this.props.history.push('/')
+        this.props.clearWorkoutList()
     }
     render() {
         const {username, profile_pic} = this.props
@@ -50,7 +51,8 @@ const mapStateToProps = reduxState => {
 }
 const mapDispatchToProps = {
     updateUser,
-    clearUser
+    clearUser,
+    clearWorkoutList
 }
 
 export default withRouter(connect( mapStateToProps, mapDispatchToProps) (NavBar))

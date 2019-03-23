@@ -8,25 +8,31 @@ class ShowAddedExercises extends Component {
     super(props)
     }
     removeExercise = async () => {
+        console.log(1111)
         const {id} = this.props
         await axios.delete(`/auth/exercise/${id}`)
         let res = await axios.get(`/auth/exercises/${id}`)
         this.props.updateExerciseList(res.data)
+    }
+    
+    
 
-
+    handleRemoveButton = () => {
+        this.removeExercise()
+        this.props.getExercises()
     }
     render() {
-        return (
-            
-            <div>
-                <button onClick={this.removeExercise}>Remove</button>
-                {this.props.name}
+        return (            
+            <div className="ShowAddedExercisesPage">
+                <button onClick={this.handleRemoveButton}>Remove</button>
+                <div className="AddedExerciseName">
+                    {this.props.name}
+                </div>
             </div>
         )
     }
 }
 const mapStateToProps = reduxState => {
-    console.log(reduxState)
     return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
 
 }

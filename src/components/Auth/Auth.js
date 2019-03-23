@@ -75,7 +75,6 @@ class Auth extends Component {
 
 
     render() {
-        console.log(this.state)
        const mappedRecentWorkouts = this.state.recentWorkouts.map((workout) => {
             return (
                 <div className="RecentWorkoutBox">
@@ -93,10 +92,10 @@ class Auth extends Component {
         const {username, password} = this.state
         return (
             <div className="LoginPage">
-            <header className="LoginHeader">Build a workout</header>
+            <header> <h1 className="LoginHeader">Strong Workouts</h1></header>
                 <div className="LoginSection">  
                     <div className="LoginInputs">             
-                        <input value={username} placeholder='Username' onChange={e => this.handleChange("username", e.target.value)} />
+                        <input value={username} placeholder='Username' maxLength={12}onChange={e => this.handleChange("username", e.target.value)} />
                         <input type="password" placeholder='Password' value={password} onChange={e => this.handleChange("password", e.target.value)} />
                     </div>
                     <div className="LoginButtons">
@@ -106,7 +105,7 @@ class Auth extends Component {
                 <div className="QuoteBox">quote box</div>
                 </div>
                     <section className="WorkoutList">
-                        <h3>List of Recent Workouts</h3>
+                        <h3>Newest Workouts</h3>
                         {mappedRecentWorkouts}
                     </section>
             </div>
