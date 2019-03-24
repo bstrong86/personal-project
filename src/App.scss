@@ -43,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
+
 
 
     ::placeholder {
@@ -59,7 +59,7 @@ body {
    }
 
    .chart{
-       background-color: black;
+       background-color: $black;
 
    }
 
@@ -68,8 +68,8 @@ body {
         height: 30%;
         width: 100%;
         background-size:cover;
-        color: black;
-        text-shadow: 1px 1px #e05bbf       
+        color: $black;
+        text-shadow: 1px 1px $pink       
     }
     
 
@@ -107,7 +107,7 @@ body {
         height: 50%;
     
         h3 {
-            color: white;
+            color: $white;
             text-shadow: 2px 2px $purple;
         }
     
@@ -133,7 +133,7 @@ button {
 
   @include desktop {
       background-image: $desktop-button-color;
-      color: rgb(255,255,255);
+      color: $white;
   }
 
 }
@@ -163,8 +163,8 @@ input {
     padding-bottom: 5px;
 
     h3 {
-        color: white;
-        text-shadow: 1px 1px #e05bbf
+        color: $white;
+        text-shadow: 1px 1px $pink
     }
 
     
@@ -186,7 +186,7 @@ input {
     margin:10px;
 
     a{
-      color:black;
+      color:$black;
       text-decoration: none;
       font-weight: bold;
     }
@@ -199,8 +199,8 @@ input {
   margin:10px;
 
   a{
-    color: black;
-    text-shadow: 1px 1px #e05bbf;
+    color: $black;
+    text-shadow: 1px 1px $pink;
     font-weight: bold;
     text-decoration: none;
   }
@@ -213,13 +213,21 @@ input {
     align-content: center;
     margin:5px;
 
+    @include tablet {
+        button{
+            width: 30%;
+            margin:5px;
+        }
+    }
+
     .MappedExercises {
         height: 650px;
         width:100%;
         overflow-y: scroll;
-        overflow-x: hidden;
+        overflow-x: hidden;        
+    }
         
-      }
+      
       
     }
         .MappedExercises::-webkit-scrollbar {
@@ -256,13 +264,18 @@ input {
         div{
             width:100%;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             align-items: center;
 
             h3 {
-                color: black;
-                text-shadow: 1px 1px #e05bbf;
+                color: $black;
+                text-shadow: 1px 1px $pink;
                 font-weight: bold;
+                margin-left: 20%;
+            }
+
+            input{
+                margin-right: 10%;
             }
 
         }
@@ -273,8 +286,13 @@ input {
         width:100%;
         overflow-y: scroll;
         overflow-x: hidden;
-        border-top: solid 1px $mobile-input-border;
-        background-color: $purple-faded
+        border-top: solid 1px $pink;
+        background-color: $purple-faded;
+
+        @include tablet {
+            width: 80%;
+            border-left: solid 1px $pink;
+        }
         
         
     }
@@ -311,7 +329,7 @@ input {
     }
 
     .AddedExerciseName {
-        color:black;
+        color:$black;
         font-weight: bold;
     }
 

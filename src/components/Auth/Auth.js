@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { updateUser, updateUserCount, updateWorkoutCount } from '../../ducks/auth_reducer'
 import RecentWorkouts from '../RecentWorkouts/RecentWorkouts';
-import Chartjs from '../Chartjs/Chartjs'
+// import Chartjs from '../Chartjs/Chartjs'
 
 
 
@@ -128,12 +128,12 @@ class Auth extends Component {
                     </div>
                 </div>
                     <section className="WorkoutList">
-                        <h3>Newest Workouts</h3>
+                        <h3>Latest Workouts</h3>
                         {mappedRecentWorkouts}
                     </section>
-            <div className="ChartBox">
+            {/* <div className="ChartBox">
                 <Chartjs/>
-            </div>
+            </div> */}
             </div>
         )
     }

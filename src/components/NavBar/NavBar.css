@@ -43,11 +43,23 @@ html {
   border: 2px solid #098ecc;
 }
 
+@media (min-width: 768px) {
+  .NavBar .NavBarProfilePic {
+    margin-left: 2%;
+  }
+}
+
 .NavBar .NavBarLogout {
   width: 25%;
   height: 35px;
   background-image: -webkit-linear-gradient(#e05bbf, #f5f250);
   border-radius: 25px;
+}
+
+@media (min-width: 768px) {
+  .NavBar .NavBarLogout {
+    margin-right: 2%;
+  }
 }
 
 .NavBar .NavBarUsername {

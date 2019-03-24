@@ -87,11 +87,11 @@ class Exercise extends Component {
             <div className="exerciseBox">
                 <h2 className="mappedExerciseName">{name}</h2>
                 <div>sets</div>
-                <input maxLength={4} disabled={(this.state.disabled)} type = "number"  value={this.state.sets} className = "exerciseSets" placeholder= {sets} onChange={e => this.handleChange("sets",e.target.value)}></input>
+                <input maxLength={4} onFocus={e => e.target.select()} disabled={(this.state.disabled)} type = "number"  value={this.state.sets} className = "exerciseSets" placeholder= {sets} onChange={e => this.handleChange("sets",e.target.value)}></input>
                 <div>reps</div>
-                <input maxLength={4} disabled={(this.state.disabled)} type = "number"  value={this.state.reps} className = "exerciseReps" placeholder= {reps} onChange={e => this.handleChange("reps",e.target.value)}></input>
+                <input maxLength={4} onFocus={e => e.target.select()} disabled={(this.state.disabled)} type = "number"  value={this.state.reps} className = "exerciseReps" placeholder= {reps} onChange={e => this.handleChange("reps",e.target.value)}></input>
                 <div>weight</div>
-                <input maxLength={4} disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
+                <input maxLength={4} onFocus={e => e.target.select()} disabled={(this.state.disabled)} type = "number"  value={this.state.weight} className = "exerciseWeight" placeholder= {weight} onChange={e => this.handleChange("weight",e.target.value)}></input>
                 
 
                 <div className="mappedExerciseButtons">

@@ -38,7 +38,11 @@ html {
         height: 80%;
         width: 20%;
         border-radius: 50%;
-        border: 2px solid $blue
+        border: 2px solid $blue;
+
+        @include tablet {
+            margin-left: 2%;
+        }
     };
 
     .NavBarLogout {
@@ -48,8 +52,7 @@ html {
         border-radius: 25px;
 
         @include tablet{
-            // position: relative;
-            // top:0px;
+           margin-right: 2%;
         
         }
     };

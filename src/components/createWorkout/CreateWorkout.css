@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+.CreateWorkoutPage {
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.CreateWorkoutPage .CreateWorkoutHeader {
+  text-shadow: 1px 1px #e05bbf;
+}
+
+.CreateWorkoutPage .CreateWorkoutButtons {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .CreateWorkoutPage .CreateWorkoutButtons {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .CreateWorkoutPage .CreateWorkoutButtons button {
+    width: 30%;
+  }
+}
+/*# sourceMappingURL=CreateWorkout.css.map */

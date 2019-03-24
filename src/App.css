@@ -291,6 +291,13 @@ input {
   margin: 5px;
 }
 
+@media (min-width: 768px) {
+  .ViewWorkoutPage button {
+    width: 30%;
+    margin: 5px;
+  }
+}
+
 .ViewWorkoutPage .MappedExercises {
   height: 650px;
   width: 100%;
@@ -351,9 +358,9 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -363,6 +370,11 @@ input {
   color: black;
   text-shadow: 1px 1px #e05bbf;
   font-weight: bold;
+  margin-left: 20%;
+}
+
+.AddExercisePage .AddExerciseInputs div input {
+  margin-right: 10%;
 }
 
 .AddExercisePage .MappedExerciseBox {
@@ -372,6 +384,13 @@ input {
   overflow-x: hidden;
   border-top: solid 1px #e05bbf;
   background-color: rgba(125, 24, 192, 0.1);
+}
+
+@media (min-width: 768px) {
+  .AddExercisePage .MappedExerciseBox {
+    width: 80%;
+    border-left: solid 1px #e05bbf;
+  }
 }
 
 .AddExercisePage .MappedExerciseBox::-webkit-scrollbar {

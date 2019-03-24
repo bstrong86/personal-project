@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateWorkout} from '../../ducks/auth_reducer'
+import {updateExercisePath} from '../../ducks/exercise_reducer'
+import './CreateWorkout.scss'
 
 class CreateWorkout extends Component {
     constructor(props) {
@@ -13,7 +15,12 @@ class CreateWorkout extends Component {
         }
            
     }
- 
+    componentDidMount = () =>{
+        const {path} = this.props.match
+        let exercise_path ={path}
+        this.props.updateExercisePath(exercise_path)
+        console.log(exercise_path)
+    }
         
     
     createWorkout = async () => {
@@ -45,22 +52,36 @@ class CreateWorkout extends Component {
        
         
         return (
-            <div>Workouts
-                <input placeholder="workout name" maxLength={24} onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
-            
-                    <button onClick={this.createWorkout}>Create Workout Name</button>
+            <div className="CreateWorkoutPage">
+            <h3 className="CreateWorkoutHeader">Create a Workout</h3>
+                <input className="CreateWorkoutInput" placeholder="Workout Name" maxLength={24} onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
+                <div className="CreateWorkoutButtons">
+                    <button onClick={this.createWorkout}>Create Workout</button>
                     <button onClick={this.backToWorkouts}>Back to Profile</button>
+                </div>
             </div>
         )
     }
     
 }
 const mapStateToProps = reduxState => {
-    return Object.assign({}, reduxState.auth_reducer, reduxState.exercise_reducer)
+    return {
+        exercise_path: reduxState.exercise_reducer.path,
+        user_id: reduxState.auth_reducer.user_id,
+        workout_id: reduxState.auth_reducer.workout_id,
+        workout_name: reduxState.auth_reducer.workout_name,
+        exercise_id: reduxState.exercise_reducer.exercise_id,
+        sets: reduxState.exercise_reducer.sets,
+        reps: reduxState.exercise_reducer.reps,
+        weight: reduxState.exercise_reducer.weight,
+        exercise_list: reduxState.exercise_reducer.exercise_list
+
+    }
 
 }
 const mapDispatchToProps = {
-    updateWorkout
+    updateWorkout,
+    updateExercisePath
 }
 
 
