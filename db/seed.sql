@@ -7,7 +7,7 @@ create table users (
 create table workouts (
     workout_id serial primary key,
     workout_name varchar,
-    users_id integer references users(user_id)
+    users_id integer references users(user_id) on delete cascade
     );
 create table exercises ( 
     exercise_id serial primary key,
@@ -15,7 +15,7 @@ create table exercises (
     reps integer,
     sets integer,
     weight integer,
-    workouts_id integer references workouts(workout_id)
+    workouts_id integer references workouts(workout_id) on delete cascade
 )
 insert into users (username, password, profile_pic)
 values ('Test', '1','test_image')

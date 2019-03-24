@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import { updateUser } from '../../ducks/auth_reducer'
+import { updateUser, updateUserCount, updateWorkoutCount } from '../../ducks/auth_reducer'
 import RecentWorkouts from '../RecentWorkouts/RecentWorkouts';
+import Chartjs from '../Chartjs/Chartjs'
 
 
 
@@ -22,6 +23,8 @@ class Auth extends Component {
     componentDidMount() {
         this.checkUser()
         this.getRecentWorkouts()
+        this.getUserCount()
+        this.getWorkoutCount()
     }
     getRecentWorkouts = async () => {
         try{
@@ -31,6 +34,28 @@ class Auth extends Component {
             })
 
         } catch (err) {
+            console.log(err)
+        }
+    }
+    getUserCount = async () => {
+        try{
+            let res = await axios.get('auth/usercount')
+            const {count} = res.data[0]
+            let user_count = count
+            let payload = {user_count}
+            this.props.updateUserCount(payload)
+        } catch(err) {
+            console.log(err)
+        }
+    }
+    getWorkoutCount = async () => {
+        try{
+            let res = await axios.get('auth/workoutcount')
+            const {count} = res.data[0]
+            let workout_count = count
+            let payload = {workout_count}
+            this.props.updateWorkoutCount(payload)
+        } catch(err) {
             console.log(err)
         }
     }
@@ -74,12 +99,11 @@ class Auth extends Component {
 
 
 
-    render() {
+    render() {        
        const mappedRecentWorkouts = this.state.recentWorkouts.map((workout) => {
             return (
-                <div className="RecentWorkoutBox">
+                <div key ={workout.workout_id} className="RecentWorkoutBox">
                 <RecentWorkouts
-                    key={workout.workout_id}
                     username={workout.username}
                     workout_name={workout.workout_name}
                     profile_pic={workout.profile_pic}
@@ -102,12 +126,14 @@ class Auth extends Component {
                         <button onClick={this.login} >Login</button>
                         <button onClick={this.handleRegisterButton}>Register</button>
                     </div>
-                <div className="QuoteBox">quote box</div>
                 </div>
                     <section className="WorkoutList">
                         <h3>Newest Workouts</h3>
                         {mappedRecentWorkouts}
                     </section>
+            <div className="ChartBox">
+                <Chartjs/>
+            </div>
             </div>
         )
     }
@@ -119,6 +145,8 @@ const mapStateToProps = reduxState => {
     
 }
 const mapDispatchToProps = {
-    updateUser
+    updateUser,
+    updateUserCount,
+    updateWorkoutCount
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

@@ -9,10 +9,11 @@ class ShowAddedExercises extends Component {
     }
     removeExercise = async () => {
         console.log(1111)
+        console.log(this.props.id)
         const {id} = this.props
         await axios.delete(`/auth/exercise/${id}`)
-        let res = await axios.get(`/auth/exercises/${id}`)
-        this.props.updateExerciseList(res.data)
+        // let res = await axios.get(`/auth/exercises/${id}`)
+        // this.props.updateExerciseList(res.data)
     }
     
     

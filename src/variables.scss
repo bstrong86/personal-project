@@ -16,14 +16,17 @@ $yellow-faded: rgba(245, 242, 80, .10);
 $pink-faded: rgba(224, 91, 191, .10);
 $blue-faded: rgba(9, 142, 204, .10);
 $purple-faded: rgba(125, 24, 192, .10);
-$yellow: rgb(245, 242, 80, );
-$pink: rgb(224, 91, 191, );
-$blue: rgb(9, 142, 204, );
-$purple: rgb(125, 24, 192, );
+$yellow: rgb(245, 242, 80);
+$pink: rgb(224, 91, 191);
+$blue: rgb(9, 142, 204);
+$purple: rgb(125, 24, 192 );
+$black: rgb(0,0,0);
+$white: rgb(255,255,255);
 
 
 // Responsive
 $desktop: 850px;
+$tablet: 768px;
 
 // buttons
 $mobile-button-color: -webkit-linear-gradient(rgb(224, 91, 191), rgb(245, 242, 80));

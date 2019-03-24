@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
 .RecentWorkouts {
   background-color: rgba(255, 255, 255, 0.05);
+  height: 100%;
   width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13,6 +14,9 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (min-width: 850px) {
@@ -31,6 +35,13 @@
   }
 }
 
+@media (min-width: 768px) {
+  .RecentWorkouts .UserPic {
+    display: block;
+    height: 100%;
+  }
+}
+
 .RecentWorkouts .Username {
   margin: 5px;
   font-weight: bold;
@@ -42,5 +53,6 @@
   font-weight: bold;
   color: white;
   text-shadow: 2px 2px #7d18c0;
+  margin-right: 20px;
 }
 /*# sourceMappingURL=RecentWorkouts.css.map */

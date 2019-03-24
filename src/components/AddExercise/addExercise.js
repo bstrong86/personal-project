@@ -22,7 +22,6 @@ class addExercise extends Component {
     
     
     getExercises = async () => {
-        console.log(2222)
         const {id} = this.props.match.params
         let res = await axios.get(`/auth/exercises/${id}`)
         this.props.updateExerciseList(res.data)
@@ -39,12 +38,8 @@ class addExercise extends Component {
             workouts_name:this.props.workout_id
         }
         const {id} = this.props.match.params
-        console.log(id)
         try {
-            let res = await axios.post(`/auth/exercise/${id}`, newExercise)
-            this.props.updateExercise(res.data)
-            
-            
+            await axios.post(`/auth/exercise/${id}`, newExercise)            
         } catch (err) {
             console.log(err)
         }
@@ -86,10 +81,24 @@ class addExercise extends Component {
         return (
             <div className="AddExercisePage">
                 <h3 className="AddExerciseHeader">Add Exercises</h3>
-                <input maxLength={24} value={this.state.name} placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
-                <input  value={this.state.sets} type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
-                <input value={this.state.reps} type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
-                <input value={this.state.weight} type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
+                <div className="AddExerciseInputs">
+                    <div>
+                        <h3>test</h3>
+                        <input maxLength={24} value={this.state.name} placeholder="Exercise Name" onChange={e => {this.handleChange("name", e.target.value)}}/>
+                    </div>
+                    <div>
+                        <h3>test</h3>
+                        <input  value={this.state.sets} type = "number" placeholder="Exercise Sets" onChange={e => {this.handleChange("sets", e.target.value)}}/>
+                    </div>
+                    <div>
+                        <h3>test</h3>                
+                        <input value={this.state.reps} type = "number"  placeholder="Exercise Reps" onChange={e => {this.handleChange("reps", e.target.value)}}/>
+                    </div>
+                    <div>
+                        <h3>test</h3>               
+                        <input value={this.state.weight} type = "number"  placeholder="Exercise Weight" onChange={e => {this.handleChange("weight", e.target.value)}}/>
+                    </div>
+                </div>
                 <button onClick= {this.handleAddButton}>Add Exercise</button>
                 <button onClick={this.handleFinishButton}>Back to Workout</button>
                 <div className="MappedExerciseBox">{mappedExercises}</div>

@@ -84,5 +84,9 @@ app.delete(`/auth/workout/:id`, ctrl.deleteWorkout)
 
 app.get('/auth/profile_pic/:id', ctrl.getMarvelPic)
 
+app.get('/auth/workoutcount', ctrl.getWorkoutCount)
+
+app.get('/auth/usercount', ctrl.getUserCount)
+
 
 app.listen(SERVER_PORT, () => console.log(`Working on port ${SERVER_PORT}`))

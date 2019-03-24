@@ -143,6 +143,17 @@ module.exports = {
         url +="&ts="+ts+"&apikey="+process.env.REACT_APP_PUBLIC_API_KEY+"&hash="+hash
         image = await axios.get(url)
             res.status(200).send(image.data.data.results[0].thumbnail)
-    }
+    },
+    getWorkoutCount: async (req, res) => {
+        const db = req.app.get('db')
+        let workoutCount = await db.get_workout_count()
+        res.status(200).send(workoutCount)
+    },
+    getUserCount: async (req, res) => {
+        const db = req.app.get('db')
+        let userCount = await db.get_user_count()
+        res.status(200).send(userCount)
+    },
+
    
 }

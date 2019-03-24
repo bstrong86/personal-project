@@ -16,6 +16,7 @@ class ViewWorkout extends Component {
 
     }
     deleteWorkout = () => {
+        console.log(11111)
         const {id} = this.props.match.params
         axios.delete(`/auth/workout/${id}`)
         this.props.history.push('/profile')

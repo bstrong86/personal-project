@@ -1,0 +1,38 @@
+@import '../../variables.scss';
+
+@mixin desktop {
+    @media(min-width: $desktop){
+        @content
+    }
+};
+
+html {
+    height: 100%;
+};
+
+.exerciseBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .mappedExerciseName {
+        color: black;
+        text-shadow: 1px 1px #e05bbf;
+        font-weight: bold;
+
+    }
+
+    .mappedExerciseButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+
+       
+    }
+
+}
+
+

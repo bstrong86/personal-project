@@ -4,17 +4,22 @@
     @media(min-width: $desktop) {
         @content
     }
-}
+};
+@mixin tablet {
+    @media(min-width: $tablet){
+        @content
+    }
+};
 
 .RecentWorkouts {
-    // background-color: white;
     background-color: rgba(255,255,255,.05);
-
+    height: 100%;
     width: 80%;
     display:flex;
     flex-direction: row;
     margin:5px;
     justify-content: space-between;
+    align-items: center;
 
     @include desktop {
         color: rgb(255,255,255)
@@ -27,12 +32,16 @@
         @include desktop {
             display:block;
         }
+        @include tablet {
+            display: block;
+            height: 100%;
+        }
     }
 
     .Username {
         margin:5px;
         font-weight: bold;
-        text-shadow: 1px 1px rgb(255,255,255)
+        text-shadow: 1px 1px rgb(255,255,255);
 
 
 
@@ -41,7 +50,9 @@
         margin: 5px;
         font-weight: bold;
         color: rgb(255,255,255);
-        text-shadow: 2px 2px $purple
+        text-shadow: 2px 2px $purple;
+        margin-right: 20px;
+
     //   1px 1px 0 black,
     //  -1px -1px 0 black,  
     //   1px -1px 0 black,

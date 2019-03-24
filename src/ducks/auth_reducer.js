@@ -4,9 +4,15 @@ const initialState = {
     profile_pic:'',
     workout_name:'',
     workout_id:0,
-    workout_list: []
+    workout_list: [],
+    user_count:0,
+    workout_count:0,
     
 }
+const UPDATE_USER_COUNT = "UPDATE_USER_COUNT"
+const CLEAR_USER_COUNT = "UPDATE_USER_COUNT"
+const UPDATE_WORKOUT_COUNT = "UPDATE_WORKOUT_COUNT"
+const CLEAR_WORKOUT_COUNT = "CLEAR_WORKOUT_COUNT"
 const UPDATE_USER = "UPDATE_USER"
 const CLEAR_USER = "CLEAR_USER"
 const UPDATE_WORKOUT ="UPDATE_WORKOUT"
@@ -48,6 +54,28 @@ export function clearWorkoutList(){
         type: CLEAR_WORKOUTLIST
     }
 }
+export function updateUserCount(user_count){
+    return{
+        type: UPDATE_USER_COUNT,
+        payload: user_count
+    }
+}
+export function clearUserCount(){
+    return {
+        type: CLEAR_USER_COUNT
+    }
+}
+export function updateWorkoutCount(workout_count){
+    return {        
+        type: UPDATE_WORKOUT_COUNT,
+        payload: workout_count
+    }
+}
+export function clearWorkoutCount(){
+    return {
+        type: CLEAR_WORKOUT_COUNT
+    }
+}
 export default function auth_reducer(state = initialState, action) {
     const {type, payload} = action
     switch (type) {
@@ -65,6 +93,16 @@ export default function auth_reducer(state = initialState, action) {
         return {...state, workout_list: [...payload]}
     case CLEAR_WORKOUTLIST:
         return {...state, workout_list:[]}
+    case UPDATE_USER_COUNT:
+        const {user_count} = payload
+        return {...state, user_count}
+    case CLEAR_USER_COUNT:
+        return {...state, user_count:0}
+    case UPDATE_WORKOUT_COUNT:
+        const {workout_count} = payload
+        return{...state, workout_count}
+    case CLEAR_WORKOUT_COUNT:
+        return {...state, workout_count:0}
     default:
          return state
     }

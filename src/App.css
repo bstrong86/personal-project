@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+#root {
+  height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 html {
@@ -24,6 +29,15 @@ body {
 
 .LoginPage {
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .LoginPage ::-webkit-input-placeholder {
@@ -55,6 +69,10 @@ body {
   .LoginPage ::placeholder {
     color: white;
   }
+}
+
+.LoginPage .chart {
+  background-color: black;
 }
 
 .LoginPage .LoginHeader {
@@ -123,6 +141,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 5px;
+  height: 50%;
 }
 
 .LoginPage .WorkoutList h3 {
@@ -145,6 +164,7 @@ body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  height: 20%;
 }
 
 button {
@@ -250,6 +270,8 @@ input {
 
 .SearchWorkoutListItem a {
   color: black;
+  text-shadow: 1px 1px #e05bbf;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -277,19 +299,22 @@ input {
 }
 
 .MappedExercises::-webkit-scrollbar {
-  width: 6px;
-  background-color: black;
+  width: 20px;
+  background-color: rgba(125, 24, 192, 0.1);
+  border-radius: 15px;
 }
 
 .MappedExercises::-webkit-scrollbar-thumb {
-  width: 6px;
-  background-color: white;
+  width: 20px;
+  background-color: #e05bbf;
+  border-radius: 15px;
 }
 
 .AddExercisePage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 90%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -307,11 +332,46 @@ input {
   margin: 10px;
 }
 
+.AddExercisePage .AddExerciseInputs {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AddExercisePage .AddExerciseInputs div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.AddExercisePage .AddExerciseInputs div h3 {
+  color: black;
+  text-shadow: 1px 1px #e05bbf;
+  font-weight: bold;
+}
+
 .AddExercisePage .MappedExerciseBox {
-  height: 220px;
+  height: 50%;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  border-top: solid 1px #e05bbf;
+  background-color: rgba(125, 24, 192, 0.1);
 }
 
 .AddExercisePage .MappedExerciseBox::-webkit-scrollbar {
