@@ -57,7 +57,7 @@ class CreateWorkout extends Component {
                 <input className="CreateWorkoutInput" placeholder="Workout Name" maxLength={24} onChange={e => {this.handleChange("newWorkout", e.target.value)}} />
                 <div className="CreateWorkoutButtons">
                     <button onClick={this.createWorkout}>Create Workout</button>
-                    <button onClick={this.backToWorkouts}>Back to Profile</button>
+                    <button onClick={this.backToWorkouts}>Back to Workouts</button>
                 </div>
             </div>
         )

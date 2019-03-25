@@ -4,7 +4,12 @@
     @media(min-width: $tablet){
         @content
     }
-}
+};
+@mixin desktop {
+    @media(min-width: $desktop){
+        @content
+    }
+};
 
 .CreateWorkoutPage {
     height: 30%;
@@ -15,6 +20,12 @@
 
     .CreateWorkoutHeader{
         text-shadow: 1px 1px $pink;
+
+        @include desktop(){
+            color:$white;
+            text-shadow: 2px 2px $black;
+
+        }
 
     }
 
@@ -31,5 +42,12 @@
             }
         }
 
+    }
+
+    .CreateWorkoutInput{
+
+        @include desktop{
+            color:$white;
+        }
     }
 }

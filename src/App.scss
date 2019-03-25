@@ -130,10 +130,13 @@ button {
   height: 35px;
   background-image: $mobile-button-color;
   border-radius: 25px;
+  
 
   @include desktop {
       background-image: $desktop-button-color;
       color: $white;
+      text-shadow: 1px 1px $black;
+
   }
 
 }
@@ -184,11 +187,14 @@ input {
     justify-content: flex-start;
     width:fit-content;
     margin:10px;
+    
 
     a{
       color:$black;
       text-decoration: none;
       font-weight: bold;
+      text-shadow: 1px 1px $pink
+
     }
 }
 
@@ -254,6 +260,12 @@ input {
     .AddExerciseHeader {
         text-shadow: 1px 1px $pink;
         margin:10px;
+
+        @include desktop{
+            color: $white;
+            text-shadow: 1px 1px $black;
+
+        }
     }
     .AddExerciseInputs {
         width: 100%;
@@ -272,10 +284,26 @@ input {
                 text-shadow: 1px 1px $pink;
                 font-weight: bold;
                 margin-left: 20%;
+
+                @include desktop{
+                    color: $white;
+                    text-shadow: 2px 2px $black;
+
+                }
             }
 
             input{
                 margin-right: 10%;
+
+                @include desktop{
+                    color:$white;
+                    text-shadow: 1px 1px $black;
+
+                    ::placeholder{
+                        color:$white;
+                    }
+
+                }
             }
 
         }
@@ -326,11 +354,19 @@ input {
     button{
         margin: 0px 25px;
         width:30%;
+
+        
     }
 
     .AddedExerciseName {
         color:$black;
         font-weight: bold;
+
+        @include desktop{
+            color: $white;
+            text-shadow: 1px 1px $black;
+
+        }
     }
 
 

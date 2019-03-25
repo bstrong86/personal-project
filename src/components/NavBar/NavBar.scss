@@ -51,10 +51,15 @@ html {
         background-image: $mobile-button-color;
         border-radius: 25px;
 
+        @include desktop {
+            background-image: $desktop-button-color;
+            color: $white;
+        };
+
         @include tablet{
-           margin-right: 2%;
-        
+           margin-right: 2%;        
         }
+        
     };
 
     .NavBarUsername {
@@ -62,14 +67,22 @@ html {
         // height: 100%;
         width: 100%;
         background-size:cover;
-        color: black;
-        text-shadow: 1px 1px #e05bbf;
+        color: $black;
+        text-shadow: 1px 1px $pink;
         font-size: 150%;
         margin:0px;
 
         @include tablet {
             top:25px;
             font-size: 3em;
+            text-shadow: 1px 1px $pink;
+
+        }
+
+        @include desktop{
+            color: $white;
+            text-shadow: 2px 2px $black;
+
         }
     };
 };

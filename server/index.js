@@ -7,12 +7,12 @@ const express = require('express'),
     aws = require('aws-sdk')
     
     
-    app.use(express.static(`${_dirname}/../build`))
     
     const app = express()
     const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, S3_BUCKET, AWS_ACCESS_KEY_ID,
       AWS_SECRET_ACCESS_KEY} = process.env
       
+// app.use(express.static(`${__dirname}/../build`))
 
 app.use(bodyParser.json())
   massive(CONNECTION_STRING).then(db => {

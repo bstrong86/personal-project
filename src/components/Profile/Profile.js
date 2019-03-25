@@ -66,7 +66,7 @@ class Profile extends Component {
     }
     handleSearch = async () => {
         const {workout_list} = this.props
-        let searchedWorkout = workout_list.filter(workout => workout.workout_name.includes(this.state.search))
+        let searchedWorkout = workout_list.filter(workout => workout.workout_name.includes(this.state.search.toUpperCase()))
             this.setState({
                 searchResult: searchedWorkout,
             })

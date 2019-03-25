@@ -21,6 +21,19 @@ html {
 
     .WorkoutListHeader{
         text-shadow: 2px 2px $pink;
+
+        @include desktop(){
+            color:$white;
+            text-shadow: 2px 2px $black;
+
+        }
+    }
+
+    .mappedWorkout{
+
+        @include desktop(){
+            color:$white;
+        }
     }
 
     .SearchWorkouts{
@@ -72,4 +85,5 @@ html {
         background-color:$pink;
         border-radius: 15px;
     }
+
 }
